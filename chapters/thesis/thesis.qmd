@@ -1,0 +1,213 @@
+# Tips and Trick to write your Thesis in Quarto
+
+Below are some tips and tricks that I needed to use alongside the
+regular Quarto settings, which were unfortunately not enough to fully
+format my thesis just like how I wanted. I had to scour the internet and
+stackoverflow alongside some latex documentation, and I hope this will
+help someone one day. Or else it serves as a nice little documentation
+for future usage.
+
+# Formatting
+
+## Add short captions to List of Tables with pandoc filters and LaTeX
+
+AKA how to add only part of figure caption in list of figures
+### Pandoc filter : short-captions
+
+Based on this
+[discussion](https://github.com/quarto-dev/quarto-cli/discussions/3769)
+which leads to the usage of the
+[short-captions](https://github.com/pandoc/lua-filters/tree/master/short-captions)
+pandoc filter.
+
+First add the filter to the yaml header:
+
+``` yaml
+filters:
+  - "pandoc-filters/short-captions.lua"
+```
+
+``` markdown
+![**Bold caption.** Additional caption. End with a citation. [@citation]](figures/figure.png){#fig:label short-caption="**Short bold caption**."}
+```
+[Cross-reference](https://quarto.org/docs/authoring/cross-references.html) in-line with this syntax : `@fig-label`
+
+
+### captioner package
+
+Based on [this thread](https://stackoverflow.com/questions/69094228/give-a-single-figure-multiple-captions-in-rmarkdown-pdf-book-output),
+or [this one](https://tex.stackexchange.com/questions/83392/change-caption-in-list-of-tables) from stackoverflow, you can run this LaTeX code to do so :
+
+``` tex
+\begin{figure}
+\includegraphics{figure.jpg} 
+\caption[\textbf{Bold caption.}]
+{\textbf{Figure or table description. (\cite{Meza-Meza.2020}) or Adapted from \textcite{Author}}
+\label{fig-label}
+\end{figure}
+```
+
+Note that I return to a new line to make it easier to read.
+
+Write `\listoffigures` to generate the list of figures.
+
+Then you can crossreference the figure using a LaTeX command :
+`**(Figure \ref{label})**`
+
+I originally used this method because I didn't know about the pandoc
+filters. I'd have to say the pandoc way is easier to write, and you can
+have a miniature image in source or visual mode inside R Studio.
+
+One minor hiccup of the latex way is that if you ever switch to the
+source pane, any bolded crossreference with latex syntax will be undone.
+Such as : From `**(Figure \ref{fig:vitd3})**` to
+`**(Figure** \ref{fig:vitd3})` when going to source and back. This is
+quite annoying. So I'd rather use pandoc from now.
+
+Update : The cleveref package @sec-bold-crossref solves this problem.
+
+### Built-in Quarto attribute using fig-scap
+
+Unknowingly, the figure attribute [fig-scap](https://quarto.org/docs/reference/cells/cells-knitr.html#figures) solves the problem.
+
+``` markdown
+![Long caption](R_logo.png){#fig-label fig-scap="A short caption"}
+```
+![Long caption](R_logo.png){#fig-label fig-scap="A short caption"}
+
+\listoffigures
+
+## Automatically bold cross-reference (Figure, Table #) {#sec-bold-crossref}
+
+Instead of using `(**Figure \ref{figure:stuff}**)`, use `\cref{figure:stuff}` which will automatically put "Figure" or "Table" or something else as appropriate.
+
+To add automatic bold, add to the preambule :
+
+``` yaml
+header-includes:
+- \usepackage[capitalise,noabbrev, nameinlink]{cleveref} # Allows \cref{} to cite latex table as "Table 3"
+# Specify which cross-reference should automatically be bolded : Tables and Figures
+# Use \cref{} ; For some reason this only works with this exact disposition :
+# Only #1, nameinlink and each of the reference specified. namelink + #1#2#3 would give an error.
+- \crefdefaultlabelformat{#2\textbf{#1}#3} # <-- Only #1 in \textbf
+- \crefname{table}{\textbf{Table}}{\textbf{Tables}}
+- \Crefname{table}{\textbf{Table}}{\textbf{Tables}}
+- \crefname{figure}{\textbf{Figure}}{\textbf{Figures}} 
+- \Crefname{figure}{\textbf{Figure}}{\textbf{Figures}}
+```
+The parameter `nameinlink` could be removed, but it allows the link to span both the number and the cross-referenced material (Table + #) and not just the number, which I find more practical.
+
+[Stackoverflow reference](https://tex.stackexchange.com/questions/87903/bold-cross-references)
+
+## Add your table of content to the pdf bookmark
+
+The generated pdf document has a convenient bookmark function for ease
+of navigation. The bookmark automatically includes pandoc headers,
+except your table of content.\
+Add the bookmark package to include headers, and then use the following
+command:
+
+``` yaml
+header-includes:
+- \usepackage{setspace} # Example of another package used. This syntax will not work with only one package.
+- \usepackage{bookmark}
+```
+
+``` tex
+% Add the command just before the toc.
+\pdfbookmark[section]{\contentsname}{toc}
+% Next command is to rename the table of content
+\renewcommand{\contentsname}{Table des matières}
+\tableofcontents{}
+\newpage
+```
+
+## Remove a section from your table of contents in pandoc
+
+[You need to combine .unlisted with .unnumbered to achieve
+this](https://stackoverflow.com/questions/49573734/do-not-include-section-in-toc-in-pandoc),
+as stated in [Pandoc
+documentation](https://pandoc.org/MANUAL.html#heading-identifiers).
+
+(I have looked inside the Pandoc documentation however and I have no
+idea where that is stated).
+
+Also, I discovered it was literally marked in the [Quarto
+documentation](https://quarto.org/docs/output-formats/pdf-basics.html#table-of-contents)
+itself !
+
+``` tex
+# Abstract {.unnumbered .unlisted}
+
+# Acknowledgements {.unnumbered .unlisted}
+
+# Chapter 1
+```
+
+## Continuous figure numbering
+
+If you want something like Figure 1, Figure 2 instead of Figure 1.1,
+Figure 1.2, you need to use the following latex command :
+
+``` tex
+- \counterwithout{figure}{chapter} 
+- \counterwithout{figure}{section}
+```
+
+This is working for me, using scrreport as the document class (KOMA
+class).
+
+### **Explanation** :
+
+[Changing the numbering of (e.g.) figures involves two
+modifications](https://imathworks.com/tex/tex-latex-continuous-v-per-chapter-section-numbering-of-figures-tables-and-other-document-elements/):
+
+-   Redefining whether or not the figure counter will be reset whenever
+    the chapter/section counter is incremented;
+
+-   Redefining the "appearance" of the figure counter (\thefigure),
+    i.e., removing (or adding) the chapter/section prefix.
+
+[**`\counterwithout{somecounter}{anothercounter}`**](https://www.overleaf.com/learn/latex/Counters#.5Ccounterwithout.7Bsomecounter.7D.7Banothercounter.7D)
+
+`\counterwithout{somecounter}{anothercounter}` removes the link between
+*`somecounter`* and *`anothercounter`* so that they are independent. For
+any pair of counters, you can switch between using `\counterwithout` and
+`\counterwithin`, as the following example shows for the `example` and
+`section` counters---you can open this example in Overleaf using the
+link provided below the code.
+
+
+# Fix bugs
+
+## Delete the biber cache
+
+If for some unknown reason, you're trying to generate your bibliography and Quarto hits you with
+
+```
+generating bibliography
+  Couldn't load any math lib(s), not even fallback to Calc.pm at C:\Users\Minh-Anh\AppData\Local\Temp\par-4d696e682d416e68\cache-5e43119d746c745befc6eda076997d4ff7d8b07a\19c9b262.pm line 25.
+etc.
+```
+Go to the specified file path and delete the folders. What a headache.
+
+Also, `biber --cache` shows you where it is (and if it's bugged, you'll be greeted with this awesome bug error).
+
+# Bibliography
+
+## Include an organization name in citeproc
+
+Just include double brackets around your {{organization}} and citeproc
+will format correctly.
+
+``` tex
+@article{IOM.2011.org,
+year = {2011},
+title = {{Dietary Reference Intakes for Calcium and Vitamin D}},
+author = {{Institute of Medicine}},
+journal = {The National Academies Press},
+doi = {10.17226/13050},
+pages = {1115},
+keywords = {},
+}
+```

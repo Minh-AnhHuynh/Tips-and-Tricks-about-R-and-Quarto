@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Tips and Tricks about R and Quarto"
+  author: "Minh-Anh Huynh"
+  date: "21/09/2023"
+  chapters:
+    - index.qmd
+    - chapters/thesis/thesis.qmd
+    - ggplot2.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: solar
+  pdf:
+    documentclass: scrreprt
+
+
+

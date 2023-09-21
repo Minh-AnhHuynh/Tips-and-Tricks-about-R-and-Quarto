@@ -1,0 +1,4 @@
+# Preface {.unnumbered}
+
+This is my homecooked R and Quarto tips and tricks that I found while debugging my stuff.
+
