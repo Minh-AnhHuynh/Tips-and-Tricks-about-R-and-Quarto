@@ -1,6 +1,6 @@
 project:
   type: book
-
+  output-dir: output
 book:
   title: "Tips and Tricks about R and Quarto"
   author: "Minh-Anh Huynh"
@@ -8,16 +8,14 @@ book:
   chapters:
     - index.qmd
     - chapters/thesis/thesis.qmd
-    - ggplot2.qmd
-    - references.qmd
+    - chapters/ggplot2/ggplot2.qmd
+    - chapters/references.qmd
 
-bibliography: references.bib
+bibliography: chapters/references.bib
 
 format:
   html:
     theme: solar
   pdf:
     documentclass: scrreprt
-
-
 

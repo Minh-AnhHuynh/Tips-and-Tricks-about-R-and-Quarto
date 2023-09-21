@@ -1,61 +1,5 @@
 [
   {
-    "objectID": "thesis.html",
-    "href": "thesis.html",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "",
-    "text": "2 Formatting"
-  },
-  {
-    "objectID": "thesis.html#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex",
-    "href": "thesis.html#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.1 Add short captions to List of Tables with pandoc filters and LaTeX",
-    "text": "2.1 Add short captions to List of Tables with pandoc filters and LaTeX\nAKA how to add only part of figure caption in list of figures ### Pandoc filter : short-captions\nBased on this discussion which leads to the usage of the short-captions pandoc filter.\nFirst add the filter to the yaml header:\nfilters:\n  - \"pandoc-filters/short-captions.lua\"\n![**Bold caption.** Additional caption. End with a citation. [@citation]](figures/figure.png){#fig:label short-caption=\"**Short bold caption**.\"}\nCross-reference in-line with this syntax : @fig-label\n\n2.1.1 captioner package\nBased on this thread, or this one from stackoverflow, you can run this LaTeX code to do so :\n\\begin{figure}\n\\includegraphics{figure.jpg} \n\\caption[\\textbf{Bold caption.}]\n{\\textbf{Figure or table description. (\\cite{Meza-Meza.2020}) or Adapted from \\textcite{Author}}\n\\label{fig-label}\n\\end{figure}\nNote that I return to a new line to make it easier to read.\nWrite \\listoffigures to generate the list of figures.\nThen you can crossreference the figure using a LaTeX command : **(Figure \\ref{label})**\nI originally used this method because I didn’t know about the pandoc filters. I’d have to say the pandoc way is easier to write, and you can have a miniature image in source or visual mode inside R Studio.\nOne minor hiccup of the latex way is that if you ever switch to the source pane, any bolded crossreference with latex syntax will be undone. Such as : From **(Figure \\ref{fig:vitd3})** to **(Figure** \\ref{fig:vitd3}) when going to source and back. This is quite annoying. So I’d rather use pandoc from now.\nUpdate : The cleveref package Section 2.2 solves this problem.\n\n\n2.1.2 Built-in Quarto attribute using fig-scap\nUnknowingly, the figure attribute fig-scap solves the problem.\n![Long caption](R_logo.png){#fig-label fig-scap=\"A short caption\"}\n\n\n\nFigure 2.1: Long caption"
-  },
-  {
-    "objectID": "thesis.html#sec-bold-crossref",
-    "href": "thesis.html#sec-bold-crossref",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.2 Automatically bold cross-reference (Figure, Table #)",
-    "text": "2.2 Automatically bold cross-reference (Figure, Table #)\nInstead of using (**Figure \\ref{figure:stuff}**), use \\cref{figure:stuff} which will automatically put “Figure” or “Table” or something else as appropriate.\nTo add automatic bold, add to the preambule :\nheader-includes:\n- \\usepackage[capitalise,noabbrev, nameinlink]{cleveref} # Allows \\cref{} to cite latex table as \"Table 3\"\n# Specify which cross-reference should automatically be bolded : Tables and Figures\n# Use \\cref{} ; For some reason this only works with this exact disposition :\n# Only #1, nameinlink and each of the reference specified. namelink + #1#2#3 would give an error.\n- \\crefdefaultlabelformat{#2\\textbf{#1}#3} # <-- Only #1 in \\textbf\n- \\crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\Crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}} \n- \\Crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}}\nThe parameter nameinlink could be removed, but it allows the link to span both the number and the cross-referenced material (Table + #) and not just the number, which I find more practical.\nStackoverflow reference"
-  },
-  {
-    "objectID": "thesis.html#add-your-table-of-content-to-the-pdf-bookmark",
-    "href": "thesis.html#add-your-table-of-content-to-the-pdf-bookmark",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.3 Add your table of content to the pdf bookmark",
-    "text": "2.3 Add your table of content to the pdf bookmark\nThe generated pdf document has a convenient bookmark function for ease of navigation. The bookmark automatically includes pandoc headers, except your table of content.\nAdd the bookmark package to include headers, and then use the following command:\nheader-includes:\n- \\usepackage{setspace} # Example of another package used. This syntax will not work with only one package.\n- \\usepackage{bookmark}\n% Add the command just before the toc.\n\\pdfbookmark[section]{\\contentsname}{toc}\n% Next command is to rename the table of content\n\\renewcommand{\\contentsname}{Table des matières}\n\\tableofcontents{}\n\\newpage"
-  },
-  {
-    "objectID": "thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
-    "href": "thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.4 Remove a section from your table of contents in pandoc",
-    "text": "2.4 Remove a section from your table of contents in pandoc\nYou need to combine .unlisted with .unnumbered to achieve this, as stated in Pandoc documentation.\n(I have looked inside the Pandoc documentation however and I have no idea where that is stated).\nAlso, I discovered it was literally marked in the Quarto documentation itself !\n# Abstract {.unnumbered .unlisted}\n\n# Acknowledgements {.unnumbered .unlisted}\n\n# Chapter 1"
-  },
-  {
-    "objectID": "thesis.html#continuous-figure-numbering",
-    "href": "thesis.html#continuous-figure-numbering",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.5 Continuous figure numbering",
-    "text": "2.5 Continuous figure numbering\nIf you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :\n- \\counterwithout{figure}{chapter} \n- \\counterwithout{figure}{section}\nThis is working for me, using scrreport as the document class (KOMA class).\n\n2.5.1 Explanation :\nChanging the numbering of (e.g.) figures involves two modifications:\n\nRedefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;\nRedefining the “appearance” of the figure counter (), i.e., removing (or adding) the chapter/section prefix.\n\n\\counterwithout{somecounter}{anothercounter}\n\\counterwithout{somecounter}{anothercounter} removes the link between somecounter and anothercounter so that they are independent. For any pair of counters, you can switch between using \\counterwithout and \\counterwithin, as the following example shows for the example and section counters—you can open this example in Overleaf using the link provided below the code."
-  },
-  {
-    "objectID": "thesis.html#delete-the-biber-cache",
-    "href": "thesis.html#delete-the-biber-cache",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "3.1 Delete the biber cache",
-    "text": "3.1 Delete the biber cache\nIf for some unknown reason, you’re trying to generate your bibliography and Quarto hits you with\ngenerating bibliography\n  Couldn't load any math lib(s), not even fallback to Calc.pm at C:\\Users\\Minh-Anh\\AppData\\Local\\Temp\\par-4d696e682d416e68\\cache-5e43119d746c745befc6eda076997d4ff7d8b07a\\19c9b262.pm line 25.\netc.\nGo to the specified file path and delete the folders. What a headache.\nAlso, biber --cache shows you where it is (and if it’s bugged, you’ll be greeted with this awesome bug error)."
-  },
-  {
-    "objectID": "thesis.html#include-an-organization-name-in-citeproc",
-    "href": "thesis.html#include-an-organization-name-in-citeproc",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "4.1 Include an organization name in citeproc",
-    "text": "4.1 Include an organization name in citeproc\nJust include double brackets around your {{organization}} and citeproc will format correctly.\n@article{IOM.2011.org,\nyear = {2011},\ntitle = {{Dietary Reference Intakes for Calcium and Vitamin D}},\nauthor = {{Institute of Medicine}},\njournal = {The National Academies Press},\ndoi = {10.17226/13050},\npages = {1115},\nkeywords = {},\n}"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Tips and Tricks about R and Quarto",
@@ -119,15 +63,15 @@
     "text": "4.1 Include an organization name in citeproc\nJust include double brackets around your {{organization}} and citeproc will format correctly.\n@article{IOM.2011.org,\nyear = {2011},\ntitle = {{Dietary Reference Intakes for Calcium and Vitamin D}},\nauthor = {{Institute of Medicine}},\njournal = {The National Academies Press},\ndoi = {10.17226/13050},\npages = {1115},\nkeywords = {},\n}"
   },
   {
-    "objectID": "ggplot2.html#non-standard-evaluation---programming-with-ggplot2",
-    "href": "ggplot2.html#non-standard-evaluation---programming-with-ggplot2",
+    "objectID": "chapters/ggplot2/ggplot2.html#non-standard-evaluation---programming-with-ggplot2",
+    "href": "chapters/ggplot2/ggplot2.html#non-standard-evaluation---programming-with-ggplot2",
     "title": "2  ggplot2",
     "section": "2.1 Non Standard Evaluation - Programming with ggplot2",
     "text": "2.1 Non Standard Evaluation - Programming with ggplot2\n\n2.1.1 Problem with programming color inside\naes uses tidy-evaluation\n\nlibrarian::shelf(ggplot2, ragg, quiet = TRUE)\n# Sample data\ndf <- data.frame(\n  a = seq(0, 100, by = 10),\n  b = seq(100, 200, by = 10)\n)\n\n# Your base plot\nbase_plot <- ggplot(data.frame(x = rnorm(100)), aes(x)) +\n  geom_density() +\n  theme_minimal()\n\n# Create the plot\nplot <- base_plot + geom_function(\n  fun = dnorm,\n  show.legend = TRUE,\n  aes(color = \"ATK\"),\n  colour = \"blue\"\n) + scale_colour_manual(name = \"Legend\", values = c(\"Line\" = \"red\"))\n\n# Display the plot\nprint(plot)\n\n\n\n\nWhy is the plot not displaying the legend with a red color ?\n\nChatGPT: The issue you’re encountering with the legend not displaying the color red and the legend being removed when you include the colour = “blue” argument in the geom_function is related to how aesthetics are mapped in ggplot2. When you use aes(color = “line”), you are mapping the color aesthetic to a constant string “line”, which means that all the points or lines will have the same color, and that color will be determined by the color scale associated with the “line” category. However, when you include colour = “blue” within the geom_function, you are effectively overriding the color aesthetic that you set with aes(color = “line”). This means that all elements drawn by this specific geom_function will be colored in blue, and ggplot2 will not create a legend because there’s no mapping of aesthetics that varies. If you want to specify a different color for this specific geom_function and still have a legend, you can do the following:\n\n\nbase_plot + \n  geom_function(\n    fun = dnorm,\n    aes(color = \"line\"),\n    show.legend = TRUE\n  ) +\n  scale_colour_manual(\n    name = \"Legend\",\n    values = c(\"line\" = \"red\")\n  )\n\n\n\n\nMore information : Indirectly referring to a variable"
   },
   {
-    "objectID": "ggplot2.html#correct-automatic-brackets",
-    "href": "ggplot2.html#correct-automatic-brackets",
+    "objectID": "chapters/ggplot2/ggplot2.html#correct-automatic-brackets",
+    "href": "chapters/ggplot2/ggplot2.html#correct-automatic-brackets",
     "title": "2  ggplot2",
     "section": "2.2 Correct automatic brackets",
     "text": "2.2 Correct automatic brackets\n\n# Install ggpubr package\nlibrarian::shelf(ggpubr, tidyr, quiet = TRUE)\n\n# Create some dummy data\nset.seed(123)\ngroup1 <- rnorm(10, mean = 5, sd = 1)\ngroup2 <- rnorm(10, mean = 7, sd = 2)\ngroup3 <- rnorm(10, mean = 9, sd = 3)\n\n# Combine the data into a data frame\ndata <- data.frame(group1, group2, group3) %>%\n  pivot_longer(cols = everything(), names_to = \"group\")\n\n# Note that ggpubr works for tidy data, hence using pivot_longer()\n\n# Create the plot\nplot <- ggboxplot(data,\n  x = \"group\",\n  y = \"value\",\n  width = 0.5,\n  fill = \"group\",\n  add = \"jitter\"\n)\nplot + stat_compare_means(method = \"anova\")\n\n\n\n\nNow let’s add some brackets:\n\n# Note that ggpubr seems to also load rstatix\nlibrarian::shelf(rstatix, quiet = TRUE)\n\n# Here is how you can add brackets with P values in your plot:\naov_results <- suppressWarnings(anova_test(value ~ group, data = data))\nif (aov_results$p <= 0.05) {\n  tukey_test <- tukey_hsd(data, value ~ group) %>% add_y_position()\n  plot + stat_pvalue_manual(tukey_test, label = \"P = {p.adj}\")\n}\n\n\n\n# Note that it is recommended to use an italic *P* in uppercase. I don't think\n# this is possible in an R code, so a simple uppercase P should suffice. However\n# now the problem is that the automatic p for the anova test is in lowercase.\n\nIn the datanovia example, you see add_xy_position() used, however that can mess up the order of the brackets. Instead, stick with add_y_position, as the x positions can be already determined in some functions. Here both functions work however. Perhaps rstatix got updated ? This was documented in this git issue.\n\ntukey_hsd(data, value ~ group) -> test\n\n\n# Alternatively with P symbols (not recommended anymore):\n    # From ?stat_compare_means()\n    symnum.args <-\n      list(\n        cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, Inf),\n        symbols = c(\"****\", \"***\", \"**\", \"*\", \"ns\")\n      )\n    # Brackets for anova would not work, so you need another test\n    my_comparisons <-\n      list(\n        c(\"group1\", \"group2\"),\n        c(\"group2\", \"group3\"),\n        c(\"group1\", \"group3\")\n      )\n    plot + stat_compare_means(\n      method = \"wilcox.test\",\n      comparisons = my_comparisons,\n      symnum.args = symnum.args\n    )\n\n\n# Note that the following code doesn't work:\naov_results <- anova_test(value ~ group, data = data) %>%\n  tukey_hsd() %>%\n  add_xy_position()\n# Instead, don't start from anova and use the test directly:\ntukey_test <- tukey_hsd(data, value ~ group) %>% add_y_position()"
