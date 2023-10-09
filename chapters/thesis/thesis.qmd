@@ -177,6 +177,21 @@ any pair of counters, you can switch between using `\counterwithout` and
 `section` counters---you can open this example in Overleaf using the
 link provided below the code.
 
+## Suppress a biblatex field in the bibliography
+
+Can be used only in the [preamble](https://quarto.org/docs/output-formats/pdf-basics.html#latex-includes):
+
+
+
+> If you compile your bibliography with biber, simply add:
+
+
+``` yaml
+header-includes:
+# Define a command to remove the "note" field from the bibliography
+- \AtEveryBibitem{\clearfield{note}}
+```
+[How can I remove common fields using `biblatex`?](https://tex.stackexchange.com/questions/280826/how-can-i-remove-common-fields-using-biblatex)
 
 # Fix bugs
 

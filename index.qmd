@@ -1,4 +1,17 @@
-# Preface {.unnumbered}
+## Preface {.unnumbered}
 
-This is my homecooked R and Quarto tips and tricks that I found while debugging my stuff.
+Greetings, fellow data enthusiasts and document aficionados,
 
+Within these pages, you'll find a curated collection of insights and practical wisdom gathered through my personal exploration of R and Quarto. While this isn't an exhaustive guide to either tool, it is a compilation of valuable tips and tricks that I've discovered along the way.
+
+This ebook is intended to serve as a reference and resource for individuals at various stages of their journey with R and Quarto. Whether you're an experienced practitioner or a novice eager to expand your knowledge, I hope you'll find the contents of this book to be both informative and useful.
+
+The motivation behind creating this ebook stems from the desire to share knowledge and simplify the complexities that can arise when working with data and document generation tools. It's a humble attempt to contribute to the community by offering practical solutions to common challenges and sharing insights that have been gained through hands-on experience.
+
+I invite you to explore this book at your own pace, experiment with the techniques presented, and adapt them to your specific projects. May it enhance your proficiency and bring efficiency to your work, all while serving as a trustworthy companion during your endeavors with R and Quarto.
+
+Remember that the pursuit of knowledge is a journey of continuous learning and growth. Embrace the challenges, celebrate the discoveries, and consider sharing your own insights with others. Together, we can foster an environment of collaborative learning and improvement.
+
+Thank you for embarking on this journey with me. I hope you find this ebook to be a valuable resource in your quest to harness the potential of R and Quarto for data analysis and document generation.
+
+Wishing you success and fulfillment in your coding and document crafting endeavors.
