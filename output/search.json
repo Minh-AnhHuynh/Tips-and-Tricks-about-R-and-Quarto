@@ -49,18 +49,18 @@
     "text": "3.4 How to set subfigure to uppercase\nUse \\renewcommand{\\thesubfigure}{\\Alph{subfigure}} in your preamble.\nSource."
   },
   {
-    "objectID": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
-    "href": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
-    "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "4.1 Remove a section from your table of contents in pandoc",
-    "text": "4.1 Remove a section from your table of contents in pandoc\nYou need to combine .unlisted with .unnumbered to achieve this, as stated in Pandoc documentation.\n(I have looked inside the Pandoc documentation however and I have no idea where that is stated).\nAlso, I discovered it was literally marked in the Quarto documentation itself !\n# Abstract {.unnumbered .unlisted}\n\n# Acknowledgements {.unnumbered .unlisted}\n\n# Chapter 1"
-  },
-  {
     "objectID": "chapters/thesis/thesis.html#continuous-figure-numbering",
     "href": "chapters/thesis/thesis.html#continuous-figure-numbering",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
     "section": "3.5 Continuous figure numbering",
     "text": "3.5 Continuous figure numbering\nIf you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :\n- \\counterwithout{figure}{chapter} \n- \\counterwithout{figure}{section}\nThis is working for me, using scrreport as the document class (KOMA class).\n\n3.5.1 Explanation :\nChanging the numbering of (e.g.) figures involves two modifications:\n\nRedefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;\nRedefining the “appearance” of the figure counter (), i.e., removing (or adding) the chapter/section prefix.\n\n\\counterwithout{somecounter}{anothercounter}\n\\counterwithout{somecounter}{anothercounter} removes the link between somecounter and anothercounter so that they are independent. For any pair of counters, you can switch between using \\counterwithout and \\counterwithin, as the following example shows for the example and section counters—you can open this example in Overleaf using the link provided below the code."
+  },
+  {
+    "objectID": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
+    "href": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
+    "title": "1  Tips and Trick to write your Thesis in Quarto",
+    "section": "4.1 Remove a section from your table of contents in pandoc",
+    "text": "4.1 Remove a section from your table of contents in pandoc\nYou need to combine .unlisted with .unnumbered to achieve this, as stated in Pandoc documentation.\n(I have looked inside the Pandoc documentation however and I have no idea where that is stated).\nAlso, I discovered it was literally marked in the Quarto documentation itself !\n# Abstract {.unnumbered .unlisted}\n\n# Acknowledgements {.unnumbered .unlisted}\n\n# Chapter 1"
   },
   {
     "objectID": "chapters/thesis/thesis.html#suppress-a-biblatex-field-in-the-bibliography",
