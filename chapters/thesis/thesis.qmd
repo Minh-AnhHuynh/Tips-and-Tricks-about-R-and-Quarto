@@ -129,6 +129,11 @@ Well that's [simple](https://tex.stackexchange.com/questions/19651/reference-to-
 
 > Instead of the center environment you could use the \centering command right after \begin{figure}[htbp]; the environment adds extra vertical space which (in most cases) is undesired – Gonzalo Medina
 
+## How to set subfigure to uppercase
+
+Use `\renewcommand{\thesubfigure}{\Alph{subfigure}}` in your preamble.
+
+[Source.](https://tex.stackexchange.com/questions/278138/how-can-i-set-the-subfigure-labels-in-latex-to-uppercase)
 
 ## Remove a section from your table of contents in pandoc
 
