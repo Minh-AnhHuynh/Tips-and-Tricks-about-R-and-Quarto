@@ -176,12 +176,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#sec-bold-crossref" id="toc-sec-bold-crossref" class="nav-link" data-scroll-target="#sec-bold-crossref"><span class="header-section-number">2.2</span> Automatically bold cross-reference (Figure, Table #)</a></li>
   <li><a href="#add-your-table-of-content-to-the-pdf-bookmark" id="toc-add-your-table-of-content-to-the-pdf-bookmark" class="nav-link" data-scroll-target="#add-your-table-of-content-to-the-pdf-bookmark"><span class="header-section-number">2.3</span> Add your table of content to the pdf bookmark</a></li>
-  <li><a href="#remove-a-section-from-your-table-of-contents-in-pandoc" id="toc-remove-a-section-from-your-table-of-contents-in-pandoc" class="nav-link" data-scroll-target="#remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">2.4</span> Remove a section from your table of contents in pandoc</a></li>
-  <li><a href="#continuous-figure-numbering" id="toc-continuous-figure-numbering" class="nav-link" data-scroll-target="#continuous-figure-numbering"><span class="header-section-number">2.5</span> Continuous figure numbering</a>
+  <li><a href="#cross-reference-not-working" id="toc-cross-reference-not-working" class="nav-link" data-scroll-target="#cross-reference-not-working"><span class="header-section-number">2.4</span> Cross-Reference not working</a></li>
+  <li><a href="#remove-a-section-from-your-table-of-contents-in-pandoc" id="toc-remove-a-section-from-your-table-of-contents-in-pandoc" class="nav-link" data-scroll-target="#remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">2.5</span> Remove a section from your table of contents in pandoc</a></li>
+  <li><a href="#continuous-figure-numbering" id="toc-continuous-figure-numbering" class="nav-link" data-scroll-target="#continuous-figure-numbering"><span class="header-section-number">2.6</span> Continuous figure numbering</a>
   <ul class="collapse">
-  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">2.5.1</span> <strong>Explanation</strong> :</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">2.6.1</span> <strong>Explanation</strong> :</a></li>
   </ul></li>
-  <li><a href="#suppress-a-biblatex-field-in-the-bibliography" id="toc-suppress-a-biblatex-field-in-the-bibliography" class="nav-link" data-scroll-target="#suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">2.6</span> Suppress a biblatex field in the bibliography</a></li>
+  <li><a href="#suppress-a-biblatex-field-in-the-bibliography" id="toc-suppress-a-biblatex-field-in-the-bibliography" class="nav-link" data-scroll-target="#suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">2.7</span> Suppress a biblatex field in the bibliography</a></li>
   </ul></li>
   <li><a href="#fix-bugs" id="toc-fix-bugs" class="nav-link" data-scroll-target="#fix-bugs"><span class="header-section-number">3</span> Fix bugs</a>
   <ul class="collapse">
@@ -285,8 +286,17 @@ Add the bookmark package to include headers, and then use the following command:
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\tableofcontents</span>{}</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\newpage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="remove-a-section-from-your-table-of-contents-in-pandoc" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">2.4</span> Remove a section from your table of contents in pandoc</h2>
+<section id="cross-reference-not-working" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="cross-reference-not-working"><span class="header-section-number">2.4</span> Cross-Reference not working</h2>
+<p>Well that’s <a href="https://tex.stackexchange.com/questions/19651/reference-to-a-figure-uses-the-sections-number">simple</a>:</p>
+<blockquote class="blockquote">
+Move after
+since
+<p>as to come before . This applies to figures and tables in general. I would not use spaces in label names. Also note Gonzalos comment regarding .</p>
+</blockquote>
+</section>
+<section id="remove-a-section-from-your-table-of-contents-in-pandoc" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">2.5</span> Remove a section from your table of contents in pandoc</h2>
 <p><a href="https://stackoverflow.com/questions/49573734/do-not-include-section-in-toc-in-pandoc">You need to combine .unlisted with .unnumbered to achieve this</a>, as stated in <a href="https://pandoc.org/MANUAL.html#heading-identifiers">Pandoc documentation</a>.</p>
 <p>(I have looked inside the Pandoc documentation however and I have no idea where that is stated).</p>
 <p>Also, I discovered it was literally marked in the <a href="https://quarto.org/docs/output-formats/pdf-basics.html#table-of-contents">Quarto documentation</a> itself !</p>
@@ -296,14 +306,14 @@ Add the bookmark package to include headers, and then use the following command:
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a># Chapter 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="continuous-figure-numbering" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="continuous-figure-numbering"><span class="header-section-number">2.5</span> Continuous figure numbering</h2>
+<section id="continuous-figure-numbering" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="continuous-figure-numbering"><span class="header-section-number">2.6</span> Continuous figure numbering</h2>
 <p>If you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>- <span class="fu">\counterwithout</span>{figure}{chapter} </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>- <span class="fu">\counterwithout</span>{figure}{section}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is working for me, using scrreport as the document class (KOMA class).</p>
-<section id="explanation" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="explanation"><span class="header-section-number">2.5.1</span> <strong>Explanation</strong> :</h3>
+<section id="explanation" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="explanation"><span class="header-section-number">2.6.1</span> <strong>Explanation</strong> :</h3>
 <p><a href="https://imathworks.com/tex/tex-latex-continuous-v-per-chapter-section-numbering-of-figures-tables-and-other-document-elements/">Changing the numbering of (e.g.) figures involves two modifications</a>:</p>
 <ul>
 <li><p>Redefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;</p></li>
@@ -313,8 +323,8 @@ Add the bookmark package to include headers, and then use the following command:
 <p><code>\counterwithout{somecounter}{anothercounter}</code> removes the link between <em><code>somecounter</code></em> and <em><code>anothercounter</code></em> so that they are independent. For any pair of counters, you can switch between using <code>\counterwithout</code> and <code>\counterwithin</code>, as the following example shows for the <code>example</code> and <code>section</code> counters—you can open this example in Overleaf using the link provided below the code.</p>
 </section>
 </section>
-<section id="suppress-a-biblatex-field-in-the-bibliography" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">2.6</span> Suppress a biblatex field in the bibliography</h2>
+<section id="suppress-a-biblatex-field-in-the-bibliography" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">2.7</span> Suppress a biblatex field in the bibliography</h2>
 <p>Can be used only in the <a href="https://quarto.org/docs/output-formats/pdf-basics.html#latex-includes">preamble</a>:</p>
 <blockquote class="blockquote">
 <p>If you compile your bibliography with biber, simply add:</p>

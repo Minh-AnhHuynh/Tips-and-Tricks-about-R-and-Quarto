@@ -121,6 +121,14 @@ header-includes:
 \tableofcontents{}
 \newpage
 ```
+## Cross-Reference showing the section number instead of figure
+
+Well that's [simple](https://tex.stackexchange.com/questions/19651/reference-to-a-figure-uses-the-sections-number):
+
+> Move `\label{fig: hasse}` after `\caption{Hasse diagram}` since `\caption` has to come before `\label`. This applies to figures and tables in general. I would not use spaces in label names. Also note Gonzalos comment regarding `\centering`.
+
+> Instead of the center environment you could use the \centering command right after \begin{figure}[htbp]; the environment adds extra vertical space which (in most cases) is undesired – Gonzalo Medina
+
 
 ## Remove a section from your table of contents in pandoc
 
