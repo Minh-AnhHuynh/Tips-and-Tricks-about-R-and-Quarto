@@ -7,11 +7,13 @@ stackoverflow alongside some latex documentation, and I hope this will
 help someone one day. Or else it serves as a nice little documentation
 for future usage.
 
-# Formatting
+# Captions
 
 ## Add short captions to List of Tables with pandoc filters and LaTeX
 
-AKA how to add only part of figure caption in list of figures
+How to add only part of figure caption in list of figures but keep the full description in the caption.
+
+
 ### Pandoc filter : short-captions
 
 Based on this
@@ -77,6 +79,8 @@ Unknowingly, the figure attribute [fig-scap](https://quarto.org/docs/reference/c
 
 \listoffigures
 
+# Cross-references
+
 ## Automatically bold cross-reference (Figure, Table #) {#sec-bold-crossref}
 
 Instead of using `(**Figure \ref{figure:stuff}**)`, use `\cref{figure:stuff}` which will automatically put "Figure" or "Table" or something else as appropriate.
@@ -135,28 +139,6 @@ Use `\renewcommand{\thesubfigure}{\Alph{subfigure}}` in your preamble.
 
 [Source.](https://tex.stackexchange.com/questions/278138/how-can-i-set-the-subfigure-labels-in-latex-to-uppercase)
 
-## Remove a section from your table of contents in pandoc
-
-[You need to combine .unlisted with .unnumbered to achieve
-this](https://stackoverflow.com/questions/49573734/do-not-include-section-in-toc-in-pandoc),
-as stated in [Pandoc
-documentation](https://pandoc.org/MANUAL.html#heading-identifiers).
-
-(I have looked inside the Pandoc documentation however and I have no
-idea where that is stated).
-
-Also, I discovered it was literally marked in the [Quarto
-documentation](https://quarto.org/docs/output-formats/pdf-basics.html#table-of-contents)
-itself !
-
-``` tex
-# Abstract {.unnumbered .unlisted}
-
-# Acknowledgements {.unnumbered .unlisted}
-
-# Chapter 1
-```
-
 ## Continuous figure numbering
 
 If you want something like Figure 1, Figure 2 instead of Figure 1.1,
@@ -190,11 +172,37 @@ any pair of counters, you can switch between using `\counterwithout` and
 `section` counters---you can open this example in Overleaf using the
 link provided below the code.
 
+# Lists of figures and tables
+
+
+## Remove a section from your table of contents in pandoc
+
+[You need to combine .unlisted with .unnumbered to achieve
+this](https://stackoverflow.com/questions/49573734/do-not-include-section-in-toc-in-pandoc),
+as stated in [Pandoc
+documentation](https://pandoc.org/MANUAL.html#heading-identifiers).
+
+(I have looked inside the Pandoc documentation however and I have no
+idea where that is stated).
+
+Also, I discovered it was literally marked in the [Quarto
+documentation](https://quarto.org/docs/output-formats/pdf-basics.html#table-of-contents)
+itself !
+
+``` tex
+# Abstract {.unnumbered .unlisted}
+
+# Acknowledgements {.unnumbered .unlisted}
+
+# Chapter 1
+```
+
+
+
+
 ## Suppress a biblatex field in the bibliography
 
 Can be used only in the [preamble](https://quarto.org/docs/output-formats/pdf-basics.html#latex-includes):
-
-
 
 > If you compile your bibliography with biber, simply add:
 
@@ -206,7 +214,6 @@ header-includes:
 ```
 [How can I remove common fields using `biblatex`?](https://tex.stackexchange.com/questions/280826/how-can-i-remove-common-fields-using-biblatex)
 
-# Fix bugs
 
 ## Delete the biber cache
 

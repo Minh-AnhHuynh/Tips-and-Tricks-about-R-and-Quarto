@@ -11,77 +11,77 @@
     "href": "chapters/thesis/thesis.html",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
     "section": "",
-    "text": "2 Formatting"
+    "text": "2 Captions"
   },
   {
     "objectID": "chapters/thesis/thesis.html#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex",
     "href": "chapters/thesis/thesis.html#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
     "section": "2.1 Add short captions to List of Tables with pandoc filters and LaTeX",
-    "text": "2.1 Add short captions to List of Tables with pandoc filters and LaTeX\nAKA how to add only part of figure caption in list of figures ### Pandoc filter : short-captions\nBased on this discussion which leads to the usage of the short-captions pandoc filter.\nFirst add the filter to the yaml header:\nfilters:\n  - \"pandoc-filters/short-captions.lua\"\n![**Bold caption.** Additional caption. End with a citation. [@citation]](figures/figure.png){#fig:label short-caption=\"**Short bold caption**.\"}\nCross-reference in-line with this syntax : @fig-label\n\n2.1.1 captioner package\nBased on this thread, or this one from stackoverflow, you can run this LaTeX code to do so :\n\\begin{figure}\n\\includegraphics{figure.jpg} \n\\caption[\\textbf{Bold caption.}]\n{\\textbf{Figure or table description. (\\cite{Meza-Meza.2020}) or Adapted from \\textcite{Author}}\n\\label{fig-label}\n\\end{figure}\nNote that I return to a new line to make it easier to read.\nWrite \\listoffigures to generate the list of figures.\nThen you can crossreference the figure using a LaTeX command : **(Figure \\ref{label})**\nI originally used this method because I didn’t know about the pandoc filters. I’d have to say the pandoc way is easier to write, and you can have a miniature image in source or visual mode inside R Studio.\nOne minor hiccup of the latex way is that if you ever switch to the source pane, any bolded crossreference with latex syntax will be undone. Such as : From **(Figure \\ref{fig:vitd3})** to **(Figure** \\ref{fig:vitd3}) when going to source and back. This is quite annoying. So I’d rather use pandoc from now.\nUpdate : The cleveref package Section 2.2 solves this problem.\n\n\n2.1.2 Built-in Quarto attribute using fig-scap\nUnknowingly, the figure attribute fig-scap solves the problem.\n![Long caption](R_logo.png){#fig-label fig-scap=\"A short caption\"}\n\n\n\nFigure 2.1: Long caption"
+    "text": "2.1 Add short captions to List of Tables with pandoc filters and LaTeX\nHow to add only part of figure caption in list of figures but keep the full description in the caption.\n\n2.1.1 Pandoc filter : short-captions\nBased on this discussion which leads to the usage of the short-captions pandoc filter.\nFirst add the filter to the yaml header:\nfilters:\n  - \"pandoc-filters/short-captions.lua\"\n![**Bold caption.** Additional caption. End with a citation. [@citation]](figures/figure.png){#fig:label short-caption=\"**Short bold caption**.\"}\nCross-reference in-line with this syntax : @fig-label\n\n\n2.1.2 captioner package\nBased on this thread, or this one from stackoverflow, you can run this LaTeX code to do so :\n\\begin{figure}\n\\includegraphics{figure.jpg} \n\\caption[\\textbf{Bold caption.}]\n{\\textbf{Figure or table description. (\\cite{Meza-Meza.2020}) or Adapted from \\textcite{Author}}\n\\label{fig-label}\n\\end{figure}\nNote that I return to a new line to make it easier to read.\nWrite \\listoffigures to generate the list of figures.\nThen you can crossreference the figure using a LaTeX command : **(Figure \\ref{label})**\nI originally used this method because I didn’t know about the pandoc filters. I’d have to say the pandoc way is easier to write, and you can have a miniature image in source or visual mode inside R Studio.\nOne minor hiccup of the latex way is that if you ever switch to the source pane, any bolded crossreference with latex syntax will be undone. Such as : From **(Figure \\ref{fig:vitd3})** to **(Figure** \\ref{fig:vitd3}) when going to source and back. This is quite annoying. So I’d rather use pandoc from now.\nUpdate : The cleveref package Section 3.1 solves this problem.\n\n\n2.1.3 Built-in Quarto attribute using fig-scap\nUnknowingly, the figure attribute fig-scap solves the problem.\n![Long caption](R_logo.png){#fig-label fig-scap=\"A short caption\"}\n\n\n\nFigure 2.1: Long caption"
   },
   {
     "objectID": "chapters/thesis/thesis.html#sec-bold-crossref",
     "href": "chapters/thesis/thesis.html#sec-bold-crossref",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.2 Automatically bold cross-reference (Figure, Table #)",
-    "text": "2.2 Automatically bold cross-reference (Figure, Table #)\nInstead of using (**Figure \\ref{figure:stuff}**), use \\cref{figure:stuff} which will automatically put “Figure” or “Table” or something else as appropriate.\nTo add automatic bold, add to the preambule :\nheader-includes:\n- \\usepackage[capitalise,noabbrev, nameinlink]{cleveref} # Allows \\cref{} to cite latex table as \"Table 3\"\n# Specify which cross-reference should automatically be bolded : Tables and Figures\n# Use \\cref{} ; For some reason this only works with this exact disposition :\n# Only #1, nameinlink and each of the reference specified. namelink + #1#2#3 would give an error.\n- \\crefdefaultlabelformat{#2\\textbf{#1}#3} # &lt;-- Only #1 in \\textbf\n- \\crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\Crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}} \n- \\Crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}}\nThe parameter nameinlink could be removed, but it allows the link to span both the number and the cross-referenced material (Table + #) and not just the number, which I find more practical.\nStackoverflow reference"
+    "section": "3.1 Automatically bold cross-reference (Figure, Table #)",
+    "text": "3.1 Automatically bold cross-reference (Figure, Table #)\nInstead of using (**Figure \\ref{figure:stuff}**), use \\cref{figure:stuff} which will automatically put “Figure” or “Table” or something else as appropriate.\nTo add automatic bold, add to the preambule :\nheader-includes:\n- \\usepackage[capitalise,noabbrev, nameinlink]{cleveref} # Allows \\cref{} to cite latex table as \"Table 3\"\n# Specify which cross-reference should automatically be bolded : Tables and Figures\n# Use \\cref{} ; For some reason this only works with this exact disposition :\n# Only #1, nameinlink and each of the reference specified. namelink + #1#2#3 would give an error.\n- \\crefdefaultlabelformat{#2\\textbf{#1}#3} # &lt;-- Only #1 in \\textbf\n- \\crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\Crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}} \n- \\Crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}}\nThe parameter nameinlink could be removed, but it allows the link to span both the number and the cross-referenced material (Table + #) and not just the number, which I find more practical.\nStackoverflow reference"
   },
   {
     "objectID": "chapters/thesis/thesis.html#add-your-table-of-content-to-the-pdf-bookmark",
     "href": "chapters/thesis/thesis.html#add-your-table-of-content-to-the-pdf-bookmark",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.3 Add your table of content to the pdf bookmark",
-    "text": "2.3 Add your table of content to the pdf bookmark\nThe generated pdf document has a convenient bookmark function for ease of navigation. The bookmark automatically includes pandoc headers, except your table of content.\nAdd the bookmark package to include headers, and then use the following command:\nheader-includes:\n- \\usepackage{setspace} # Example of another package used. This syntax will not work with only one package.\n- \\usepackage{bookmark}\n% Add the command just before the toc.\n\\pdfbookmark[section]{\\contentsname}{toc}\n% Next command is to rename the table of content\n\\renewcommand{\\contentsname}{Table des matières}\n\\tableofcontents{}\n\\newpage"
+    "section": "3.2 Add your table of content to the pdf bookmark",
+    "text": "3.2 Add your table of content to the pdf bookmark\nThe generated pdf document has a convenient bookmark function for ease of navigation. The bookmark automatically includes pandoc headers, except your table of content.\nAdd the bookmark package to include headers, and then use the following command:\nheader-includes:\n- \\usepackage{setspace} # Example of another package used. This syntax will not work with only one package.\n- \\usepackage{bookmark}\n% Add the command just before the toc.\n\\pdfbookmark[section]{\\contentsname}{toc}\n% Next command is to rename the table of content\n\\renewcommand{\\contentsname}{Table des matières}\n\\tableofcontents{}\n\\newpage"
   },
   {
     "objectID": "chapters/thesis/thesis.html#cross-reference-showing-the-section-number-instead-of-figure",
     "href": "chapters/thesis/thesis.html#cross-reference-showing-the-section-number-instead-of-figure",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.4 Cross-Reference showing the section number instead of figure",
-    "text": "2.4 Cross-Reference showing the section number instead of figure\nWell that’s simple:\n\nMove \\label{fig: hasse} after \\caption{Hasse diagram} since \\caption has to come before \\label. This applies to figures and tables in general. I would not use spaces in label names. Also note Gonzalos comment regarding \\centering.\n\n\nInstead of the center environment you could use the command right after \\begin{figure}[htbp]; the environment adds extra vertical space which (in most cases) is undesired – Gonzalo Medina"
+    "section": "3.3 Cross-Reference showing the section number instead of figure",
+    "text": "3.3 Cross-Reference showing the section number instead of figure\nWell that’s simple:\n\nMove \\label{fig: hasse} after \\caption{Hasse diagram} since \\caption has to come before \\label. This applies to figures and tables in general. I would not use spaces in label names. Also note Gonzalos comment regarding \\centering.\n\n\nInstead of the center environment you could use the command right after \\begin{figure}[htbp]; the environment adds extra vertical space which (in most cases) is undesired – Gonzalo Medina"
   },
   {
     "objectID": "chapters/thesis/thesis.html#how-to-set-subfigure-to-uppercase",
     "href": "chapters/thesis/thesis.html#how-to-set-subfigure-to-uppercase",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.5 How to set subfigure to uppercase",
-    "text": "2.5 How to set subfigure to uppercase\nUse \\renewcommand{\\thesubfigure}{\\Alph{subfigure}} in your preamble.\nSource."
+    "section": "3.4 How to set subfigure to uppercase",
+    "text": "3.4 How to set subfigure to uppercase\nUse \\renewcommand{\\thesubfigure}{\\Alph{subfigure}} in your preamble.\nSource."
   },
   {
     "objectID": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
     "href": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.6 Remove a section from your table of contents in pandoc",
-    "text": "2.6 Remove a section from your table of contents in pandoc\nYou need to combine .unlisted with .unnumbered to achieve this, as stated in Pandoc documentation.\n(I have looked inside the Pandoc documentation however and I have no idea where that is stated).\nAlso, I discovered it was literally marked in the Quarto documentation itself !\n# Abstract {.unnumbered .unlisted}\n\n# Acknowledgements {.unnumbered .unlisted}\n\n# Chapter 1"
+    "section": "4.1 Remove a section from your table of contents in pandoc",
+    "text": "4.1 Remove a section from your table of contents in pandoc\nYou need to combine .unlisted with .unnumbered to achieve this, as stated in Pandoc documentation.\n(I have looked inside the Pandoc documentation however and I have no idea where that is stated).\nAlso, I discovered it was literally marked in the Quarto documentation itself !\n# Abstract {.unnumbered .unlisted}\n\n# Acknowledgements {.unnumbered .unlisted}\n\n# Chapter 1"
   },
   {
     "objectID": "chapters/thesis/thesis.html#continuous-figure-numbering",
     "href": "chapters/thesis/thesis.html#continuous-figure-numbering",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.7 Continuous figure numbering",
-    "text": "2.7 Continuous figure numbering\nIf you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :\n- \\counterwithout{figure}{chapter} \n- \\counterwithout{figure}{section}\nThis is working for me, using scrreport as the document class (KOMA class).\n\n2.7.1 Explanation :\nChanging the numbering of (e.g.) figures involves two modifications:\n\nRedefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;\nRedefining the “appearance” of the figure counter (), i.e., removing (or adding) the chapter/section prefix.\n\n\\counterwithout{somecounter}{anothercounter}\n\\counterwithout{somecounter}{anothercounter} removes the link between somecounter and anothercounter so that they are independent. For any pair of counters, you can switch between using \\counterwithout and \\counterwithin, as the following example shows for the example and section counters—you can open this example in Overleaf using the link provided below the code."
+    "section": "3.5 Continuous figure numbering",
+    "text": "3.5 Continuous figure numbering\nIf you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :\n- \\counterwithout{figure}{chapter} \n- \\counterwithout{figure}{section}\nThis is working for me, using scrreport as the document class (KOMA class).\n\n3.5.1 Explanation :\nChanging the numbering of (e.g.) figures involves two modifications:\n\nRedefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;\nRedefining the “appearance” of the figure counter (), i.e., removing (or adding) the chapter/section prefix.\n\n\\counterwithout{somecounter}{anothercounter}\n\\counterwithout{somecounter}{anothercounter} removes the link between somecounter and anothercounter so that they are independent. For any pair of counters, you can switch between using \\counterwithout and \\counterwithin, as the following example shows for the example and section counters—you can open this example in Overleaf using the link provided below the code."
   },
   {
     "objectID": "chapters/thesis/thesis.html#suppress-a-biblatex-field-in-the-bibliography",
     "href": "chapters/thesis/thesis.html#suppress-a-biblatex-field-in-the-bibliography",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.8 Suppress a biblatex field in the bibliography",
-    "text": "2.8 Suppress a biblatex field in the bibliography\nCan be used only in the preamble:\n\nIf you compile your bibliography with biber, simply add:\n\nheader-includes:\n# Define a command to remove the \"note\" field from the bibliography\n- \\AtEveryBibitem{\\clearfield{note}}\nHow can I remove common fields using biblatex?"
+    "section": "4.2 Suppress a biblatex field in the bibliography",
+    "text": "4.2 Suppress a biblatex field in the bibliography\nCan be used only in the preamble:\n\nIf you compile your bibliography with biber, simply add:\n\nheader-includes:\n# Define a command to remove the \"note\" field from the bibliography\n- \\AtEveryBibitem{\\clearfield{note}}\nHow can I remove common fields using biblatex?"
   },
   {
     "objectID": "chapters/thesis/thesis.html#delete-the-biber-cache",
     "href": "chapters/thesis/thesis.html#delete-the-biber-cache",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "3.1 Delete the biber cache",
-    "text": "3.1 Delete the biber cache\nIf for some unknown reason, you’re trying to generate your bibliography and Quarto hits you with\ngenerating bibliography\n  Couldn't load any math lib(s), not even fallback to Calc.pm at C:\\Users\\Minh-Anh\\AppData\\Local\\Temp\\par-4d696e682d416e68\\cache-5e43119d746c745befc6eda076997d4ff7d8b07a\\19c9b262.pm line 25.\netc.\nGo to the specified file path and delete the folders. What a headache.\nAlso, biber --cache shows you where it is (and if it’s bugged, you’ll be greeted with this awesome bug error)."
+    "section": "4.3 Delete the biber cache",
+    "text": "4.3 Delete the biber cache\nIf for some unknown reason, you’re trying to generate your bibliography and Quarto hits you with\ngenerating bibliography\n  Couldn't load any math lib(s), not even fallback to Calc.pm at C:\\Users\\Minh-Anh\\AppData\\Local\\Temp\\par-4d696e682d416e68\\cache-5e43119d746c745befc6eda076997d4ff7d8b07a\\19c9b262.pm line 25.\netc.\nGo to the specified file path and delete the folders. What a headache.\nAlso, biber --cache shows you where it is (and if it’s bugged, you’ll be greeted with this awesome bug error)."
   },
   {
     "objectID": "chapters/thesis/thesis.html#include-an-organization-name-in-citeproc",
     "href": "chapters/thesis/thesis.html#include-an-organization-name-in-citeproc",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "4.1 Include an organization name in citeproc",
-    "text": "4.1 Include an organization name in citeproc\nJust include double brackets around your {{organization}} and citeproc will format correctly.\n@article{IOM.2011.org,\nyear = {2011},\ntitle = {{Dietary Reference Intakes for Calcium and Vitamin D}},\nauthor = {{Institute of Medicine}},\njournal = {The National Academies Press},\ndoi = {10.17226/13050},\npages = {1115},\nkeywords = {},\n}"
+    "section": "5.1 Include an organization name in citeproc",
+    "text": "5.1 Include an organization name in citeproc\nJust include double brackets around your {{organization}} and citeproc will format correctly.\n@article{IOM.2011.org,\nyear = {2011},\ntitle = {{Dietary Reference Intakes for Calcium and Vitamin D}},\nauthor = {{Institute of Medicine}},\njournal = {The National Academies Press},\ndoi = {10.17226/13050},\npages = {1115},\nkeywords = {},\n}"
   },
   {
     "objectID": "chapters/ggplot2/ggplot2.html#non-standard-evaluation---programming-with-ggplot2",
