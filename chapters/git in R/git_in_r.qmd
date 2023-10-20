@@ -1,0 +1,25 @@
+# Git in R
+
+## Setting up Git
+
+Use package `usethis`
+
+`usethis::use_github()`
+
+## Using Git with multiple local accounts
+
+The idea behind using Git with multiple accounts including multiple Github account is to be able to separate your personal from your office work.
+
+There's plenty of guides that explain how to do it.
+https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3
+https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/
+
+
+Use `usethis::git_sitrep()` to troubleshoot things.
+
+However they fail to mention one thing:
+
+The current git (local) protocol used is determined by the remote link of the current git repo.
+
+Use `git remote -v` 
+
