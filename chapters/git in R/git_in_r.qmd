@@ -2,17 +2,46 @@
 
 ## Setting up Git
 
-Use package `usethis`
 
-`usethis::use_github()`
+Quick settings :
+
+- Have a Github account
+- Open an R project.
+- Use package [`usethis`](https://usethis.r-lib.org/articles/usethis-setup.html#get-a-github-com-account) : 
+
+```{r, eval=FALSE, include=TRUE}
+library(usethis) ## or library(devtools)
+use_git_config(user.name = "Jane Doe", user.email = "jane@example.com")
+
+# check by running a git situation-report: 
+#   - your user.name and user.email should appear in global Git config 
+git_sitrep()
+
+use_git() # Initialize git
+use_github(private = TRUE) # Create github repo, private or not
+```
+
+
+https://happygitwithr.com/
+This is the best [guide for Git in R](https://happygitwithr.com/) currently.
+
+
+How to create a [Personal Access Token](https://github.com/r-lib/gitcreds) (PAT).
+
+
+
 
 ## Using Git with multiple local accounts
 
 The idea behind using Git with multiple accounts including multiple Github account is to be able to separate your personal from your office work.
 
-There's plenty of guides that explain how to do it.
-https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3
-https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/
+Happy Git with R recommends HTTPS instead of SSH.
+[Happy Git with R](https://happygitwithr.com/https-pat#https-vs-ssh)
+
+There's plenty of guides that explain how to do it:
+
+- [How To Work With Multiple Github Accounts on a single Machine](https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3)
+- [https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/](https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/)
 
 
 Use `usethis::git_sitrep()` to troubleshoot things.
@@ -23,3 +52,4 @@ The current git (local) protocol used is determined by the remote link of the cu
 
 Use `git remote -v` 
 
+As such, you can easily have a main account with PAT, and have a local git folder with SSH for your other account. You just need to choose the correct protocol.

@@ -10,7 +10,7 @@ book:
   chapters:
     - index.qmd
     - chapters/thesis/thesis.qmd
-    - chapters/git_in_r.qmd
+    - chapters/git in R/git_in_r.qmd
     - chapters/ggplot2/ggplot2.qmd
     - chapters/references.qmd
 
