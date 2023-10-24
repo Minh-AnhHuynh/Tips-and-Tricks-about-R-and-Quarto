@@ -4,7 +4,7 @@
     "href": "index.html#preface",
     "title": "Tips and Tricks about R and Quarto",
     "section": "Preface",
-    "text": "Preface\nThis is my homecooked R and Quarto tips and tricks that I found while writing my thesis and debugging my stuff that I haven’t found in the basic tutorial and guides. Perhaps will it serve to help someone someday.h"
+    "text": "Preface\nThis is my homecooked R and Quarto tips and tricks that I found while writing my thesis and debugging my stuff that I haven’t found in the basic tutorial and guides. This serves as my personal quick reference so that I don’t look for guides again when I’ve already found the solution. Perhaps it can be helpful as well to others."
   },
   {
     "objectID": "chapters/thesis/thesis.html",
@@ -88,7 +88,7 @@
     "href": "chapters/git in R/git_in_r.html#setting-up-git",
     "title": "2  Git in R",
     "section": "2.1 Setting up Git",
-    "text": "2.1 Setting up Git\nQuick settings :\n\nHave a Github account\nOpen an R project.\nUse package usethis :\n\n\nlibrary(usethis) ## or library(devtools)\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.com\")\n\n# check by running a git situation-report: \n#   - your user.name and user.email should appear in global Git config \ngit_sitrep()\n\nuse_git() # Initialize git\nuse_github(private = TRUE) # Create github repo, private or not\n\nhttps://happygitwithr.com/ This is the best guide for Git in R currently.\nHow to create a Personal Access Token (PAT)."
+    "text": "2.1 Setting up Git\nQuick settings :\n\nHave a Github account\nOpen an R project.\nUse package usethis :\n\n\nlibrary(usethis) ## or library(devtools)\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.com\")\n\n# check by running a git situation-report: \n#   - your user.name and user.email should appear in global Git config \ngit_sitrep()\n\nuse_git() # Initialize git\nuse_github(private = TRUE) # Create github repo, private or not\n\nhttps://happygitwithr.com/ This is the best guide for Git in R currently.\n\n2.1.1 Create a PAT\nHow to create a Personal Access Token (PAT).\n\nlibrary(gitcreds)\ngitcreds_get()\ngitcreds_set()"
   },
   {
     "objectID": "chapters/git in R/git_in_r.html#using-git-with-multiple-local-accounts",

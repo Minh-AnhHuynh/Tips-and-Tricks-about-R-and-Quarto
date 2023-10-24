@@ -173,7 +173,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setting-up-git" id="toc-setting-up-git" class="nav-link active" data-scroll-target="#setting-up-git"><span class="header-section-number">2.1</span> Setting up Git</a></li>
+  <li><a href="#setting-up-git" id="toc-setting-up-git" class="nav-link active" data-scroll-target="#setting-up-git"><span class="header-section-number">2.1</span> Setting up Git</a>
+  <ul class="collapse">
+  <li><a href="#create-a-pat" id="toc-create-a-pat" class="nav-link" data-scroll-target="#create-a-pat"><span class="header-section-number">2.1.1</span> Create a PAT</a></li>
+  </ul></li>
   <li><a href="#using-git-with-multiple-local-accounts" id="toc-using-git-with-multiple-local-accounts" class="nav-link" data-scroll-target="#using-git-with-multiple-local-accounts"><span class="header-section-number">2.2</span> Using Git with multiple local accounts</a></li>
   </ul>
 </nav>
@@ -218,7 +221,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">use_github</span>(<span class="at">private =</span> <span class="cn">TRUE</span>) <span class="co"># Create github repo, private or not</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>https://happygitwithr.com/ This is the best <a href="https://happygitwithr.com/">guide for Git in R</a> currently.</p>
+<section id="create-a-pat" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="create-a-pat"><span class="header-section-number">2.1.1</span> Create a PAT</h3>
 <p>How to create a <a href="https://github.com/r-lib/gitcreds">Personal Access Token</a> (PAT).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gitcreds)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gitcreds_get</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="using-git-with-multiple-local-accounts" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="using-git-with-multiple-local-accounts"><span class="header-section-number">2.2</span> Using Git with multiple local accounts</h2>
