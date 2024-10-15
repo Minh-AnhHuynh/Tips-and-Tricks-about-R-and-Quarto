@@ -1,0 +1,20 @@
+{
+  "hash": "e1ba850fef1aa26f4e0ddae54618a0c8",
+  "result": {
+    "markdown": "# Git in R\n\n## Setting up Git\n\n\nQuick settings :\n\n- Have a Github account\n- Open an R project.\n- Use package [`usethis`](https://usethis.r-lib.org/articles/usethis-setup.html#get-a-github-com-account) : \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(usethis) ## or library(devtools)\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.com\")\n\n# check by running a git situation-report: \n#   - your user.name and user.email should appear in global Git config \ngit_sitrep()\n\nuse_git() # Initialize git\nuse_github(private = TRUE) # Create github repo, private or not\n```\n:::\n\n\n\n\nhttps://happygitwithr.com/\nThis is the best [guide for Git in R](https://happygitwithr.com/) currently.\n\n### Create a PAT\n\nHow to create a [Personal Access Token](https://github.com/r-lib/gitcreds) (PAT).\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(gitcreds)\ngitcreds_get()\ngitcreds_set()\n```\n:::\n\n\n\n\n\n\n## Using Git with multiple local accounts\n\nThe idea behind using Git with multiple accounts including multiple Github account is to be able to separate your personal from your office work.\n\nHappy Git with R recommends HTTPS instead of SSH.\n[Happy Git with R](https://happygitwithr.com/https-pat#https-vs-ssh)\n\nThere's plenty of guides that explain how to do it:\n\n- [How To Work With Multiple Github Accounts on a single Machine](https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3)\n- [https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/](https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/)\n\n\nUse `usethis::git_sitrep()` to troubleshoot things.\n\nHowever they fail to mention one thing:\n\nThe current git (local) protocol used is determined by the remote link of the current git repo.\n\nUse `git remote -v` \n\nAs such, you can easily have a main account with PAT, and have a local git folder with SSH for your other account. You just need to choose the correct protocol.\n",
+    "supporting": [
+      "git_in_r_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}

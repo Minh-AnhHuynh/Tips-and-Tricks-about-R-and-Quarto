@@ -173,7 +173,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setting-up-git" id="toc-setting-up-git" class="nav-link active" data-scroll-target="#setting-up-git"><span class="header-section-number">2.1</span> Setting up Git</a></li>
+  <li><a href="#setting-up-git" id="toc-setting-up-git" class="nav-link active" data-scroll-target="#setting-up-git"><span class="header-section-number">2.1</span> Setting up Git</a>
+  <ul class="collapse">
+  <li><a href="#create-a-pat" id="toc-create-a-pat" class="nav-link" data-scroll-target="#create-a-pat"><span class="header-section-number">2.1.1</span> Create a PAT</a></li>
+  </ul></li>
   <li><a href="#using-git-with-multiple-local-accounts" id="toc-using-git-with-multiple-local-accounts" class="nav-link" data-scroll-target="#using-git-with-multiple-local-accounts"><span class="header-section-number">2.2</span> Using Git with multiple local accounts</a></li>
   </ul>
 </nav>
@@ -200,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="setting-up-git" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="setting-up-git"><span class="header-section-number">2.1</span> Setting up Git</h2>
-<p>Short answer:</p>
+<p>Quick settings :</p>
 <ul>
 <li>Have a Github account</li>
 <li>Open an R project.</li>
@@ -212,22 +215,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check by running a git situation-report: </span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   - your user.name and user.email should appear in global Git config </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git_sitrep</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git_sitrep</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git</span>() <span class="co"># Initialize git</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">use_github</span>(<span class="at">private =</span> <span class="cn">TRUE</span>) <span class="co"># Create github repo, private or not</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>https://happygitwithr.com/ This is the <a href="best guide for Git in R currently">https://happygitwithr.com/</a>.</p>
+<p>https://happygitwithr.com/ This is the best <a href="https://happygitwithr.com/">guide for Git in R</a> currently.</p>
+<section id="create-a-pat" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="create-a-pat"><span class="header-section-number">2.1.1</span> Create a PAT</h3>
 <p>How to create a <a href="https://github.com/r-lib/gitcreds">Personal Access Token</a> (PAT).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gitcreds)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gitcreds_get</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="using-git-with-multiple-local-accounts" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="using-git-with-multiple-local-accounts"><span class="header-section-number">2.2</span> Using Git with multiple local accounts</h2>
 <p>The idea behind using Git with multiple accounts including multiple Github account is to be able to separate your personal from your office work.</p>
 <p>Happy Git with R recommends HTTPS instead of SSH. <a href="https://happygitwithr.com/https-pat#https-vs-ssh">Happy Git with R</a></p>
-<p>There’s plenty of guides that explain how to do it.</p>
-<p><a href="https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3">How To Work With Multiple Github Accounts on a single Machine</a></p>
-<p><a href="https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/">https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/</a></p>
+<p>There’s plenty of guides that explain how to do it:</p>
+<ul>
+<li><a href="https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3">How To Work With Multiple Github Accounts on a single Machine</a></li>
+<li><a href="https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/">https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/</a></li>
+</ul>
 <p>Use <code>usethis::git_sitrep()</code> to troubleshoot things.</p>
 <p>However they fail to mention one thing:</p>
 <p>The current git (local) protocol used is determined by the remote link of the current git repo.</p>
 <p>Use <code>git remote -v</code></p>
+<p>As such, you can easily have a main account with PAT, and have a local git folder with SSH for your other account. You just need to choose the correct protocol.</p>
 
 
 </section>

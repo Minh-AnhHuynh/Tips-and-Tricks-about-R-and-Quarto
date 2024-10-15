@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tips and Tricks about R and Quarto - 1&nbsp; Tips and Trick to write your Thesis in Quarto</title>
+<title>1&nbsp; Tips and Trick to write your Thesis in Quarto – Tips and Tricks about R and Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -105,13 +112,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/thesis/thesis.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tips and Trick to write your Thesis in Quarto</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/thesis/thesis.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Tips and Trick to write your Thesis in Quarto</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -120,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Tips and Tricks about R and Quarto</a> 
@@ -166,42 +173,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#captions" id="toc-captions" class="nav-link active" data-scroll-target="#captions"><span class="header-section-number">2</span> Captions</a>
+  <li><a href="#acronyms-and-glossaries" id="toc-acronyms-and-glossaries" class="nav-link active" data-scroll-target="#acronyms-and-glossaries"><span class="header-section-number">2</span> Acronyms and glossaries</a></li>
+  <li><a href="#captions" id="toc-captions" class="nav-link" data-scroll-target="#captions"><span class="header-section-number">3</span> Captions</a>
   <ul class="collapse">
-  <li><a href="#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex" id="toc-add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex" class="nav-link" data-scroll-target="#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex"><span class="header-section-number">2.1</span> Add short captions to List of Tables with pandoc filters and LaTeX</a>
+  <li><a href="#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex" id="toc-add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex" class="nav-link" data-scroll-target="#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex"><span class="header-section-number">3.1</span> Add short captions to List of Tables with pandoc filters and LaTeX</a>
   <ul class="collapse">
-  <li><a href="#pandoc-filter-short-captions" id="toc-pandoc-filter-short-captions" class="nav-link" data-scroll-target="#pandoc-filter-short-captions"><span class="header-section-number">2.1.1</span> Pandoc filter : short-captions</a></li>
-  <li><a href="#captioner-package" id="toc-captioner-package" class="nav-link" data-scroll-target="#captioner-package"><span class="header-section-number">2.1.2</span> captioner package</a></li>
-  <li><a href="#built-in-quarto-attribute-using-fig-scap" id="toc-built-in-quarto-attribute-using-fig-scap" class="nav-link" data-scroll-target="#built-in-quarto-attribute-using-fig-scap"><span class="header-section-number">2.1.3</span> Built-in Quarto attribute using fig-scap</a></li>
+  <li><a href="#pandoc-filter-short-captions" id="toc-pandoc-filter-short-captions" class="nav-link" data-scroll-target="#pandoc-filter-short-captions"><span class="header-section-number">3.1.1</span> Pandoc filter : short-captions</a></li>
+  <li><a href="#captioner-package" id="toc-captioner-package" class="nav-link" data-scroll-target="#captioner-package"><span class="header-section-number">3.1.2</span> captioner package</a></li>
+  <li><a href="#built-in-quarto-attribute-using-fig-scap" id="toc-built-in-quarto-attribute-using-fig-scap" class="nav-link" data-scroll-target="#built-in-quarto-attribute-using-fig-scap"><span class="header-section-number">3.1.3</span> Built-in Quarto attribute using fig-scap</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">3</span> Cross-references</a>
+  <li><a href="#cross-references" id="toc-cross-references" class="nav-link" data-scroll-target="#cross-references"><span class="header-section-number">4</span> Cross-references</a>
   <ul class="collapse">
-  <li><a href="#sec-bold-crossref" id="toc-sec-bold-crossref" class="nav-link" data-scroll-target="#sec-bold-crossref"><span class="header-section-number">3.1</span> Automatically bold cross-reference (Figure, Table #)</a></li>
-  <li><a href="#add-your-table-of-content-to-the-pdf-bookmark" id="toc-add-your-table-of-content-to-the-pdf-bookmark" class="nav-link" data-scroll-target="#add-your-table-of-content-to-the-pdf-bookmark"><span class="header-section-number">3.2</span> Add your table of content to the pdf bookmark</a></li>
-  <li><a href="#cross-reference-showing-the-section-number-instead-of-figure" id="toc-cross-reference-showing-the-section-number-instead-of-figure" class="nav-link" data-scroll-target="#cross-reference-showing-the-section-number-instead-of-figure"><span class="header-section-number">3.3</span> Cross-Reference showing the section number instead of figure</a></li>
-  <li><a href="#how-to-set-subfigure-to-uppercase" id="toc-how-to-set-subfigure-to-uppercase" class="nav-link" data-scroll-target="#how-to-set-subfigure-to-uppercase"><span class="header-section-number">3.4</span> How to set subfigure to uppercase</a></li>
-  <li><a href="#continuous-figure-numbering" id="toc-continuous-figure-numbering" class="nav-link" data-scroll-target="#continuous-figure-numbering"><span class="header-section-number">3.5</span> Continuous figure numbering</a>
+  <li><a href="#sec-bold-crossref" id="toc-sec-bold-crossref" class="nav-link" data-scroll-target="#sec-bold-crossref"><span class="header-section-number">4.1</span> Automatically bold cross-reference (Figure, Table #)</a></li>
+  <li><a href="#add-your-table-of-content-to-the-pdf-bookmark" id="toc-add-your-table-of-content-to-the-pdf-bookmark" class="nav-link" data-scroll-target="#add-your-table-of-content-to-the-pdf-bookmark"><span class="header-section-number">4.2</span> Add your table of content to the pdf bookmark</a></li>
+  <li><a href="#cross-reference-showing-the-section-number-instead-of-figure" id="toc-cross-reference-showing-the-section-number-instead-of-figure" class="nav-link" data-scroll-target="#cross-reference-showing-the-section-number-instead-of-figure"><span class="header-section-number">4.3</span> Cross-Reference showing the section number instead of figure</a></li>
+  <li><a href="#how-to-set-subfigure-to-uppercase" id="toc-how-to-set-subfigure-to-uppercase" class="nav-link" data-scroll-target="#how-to-set-subfigure-to-uppercase"><span class="header-section-number">4.4</span> How to set subfigure to uppercase</a></li>
+  <li><a href="#continuous-figure-numbering" id="toc-continuous-figure-numbering" class="nav-link" data-scroll-target="#continuous-figure-numbering"><span class="header-section-number">4.5</span> Continuous figure numbering</a>
   <ul class="collapse">
-  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">3.5.1</span> <strong>Explanation</strong> :</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">4.5.1</span> <strong>Explanation</strong> :</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#lists-of-figures-and-tables" id="toc-lists-of-figures-and-tables" class="nav-link" data-scroll-target="#lists-of-figures-and-tables"><span class="header-section-number">4</span> Lists of figures and tables</a>
+  <li><a href="#lists-of-figures-and-tables" id="toc-lists-of-figures-and-tables" class="nav-link" data-scroll-target="#lists-of-figures-and-tables"><span class="header-section-number">5</span> Lists of figures and tables</a>
   <ul class="collapse">
-  <li><a href="#remove-a-section-from-your-table-of-contents-in-pandoc" id="toc-remove-a-section-from-your-table-of-contents-in-pandoc" class="nav-link" data-scroll-target="#remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">4.1</span> Remove a section from your table of contents in pandoc</a></li>
-  <li><a href="#suppress-a-biblatex-field-in-the-bibliography" id="toc-suppress-a-biblatex-field-in-the-bibliography" class="nav-link" data-scroll-target="#suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">4.2</span> Suppress a biblatex field in the bibliography</a></li>
-  <li><a href="#delete-the-biber-cache" id="toc-delete-the-biber-cache" class="nav-link" data-scroll-target="#delete-the-biber-cache"><span class="header-section-number">4.3</span> Delete the biber cache</a></li>
+  <li><a href="#remove-a-section-from-your-table-of-contents-in-pandoc" id="toc-remove-a-section-from-your-table-of-contents-in-pandoc" class="nav-link" data-scroll-target="#remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">5.1</span> Remove a section from your table of contents in pandoc</a></li>
+  <li><a href="#suppress-a-biblatex-field-in-the-bibliography" id="toc-suppress-a-biblatex-field-in-the-bibliography" class="nav-link" data-scroll-target="#suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">5.2</span> Suppress a biblatex field in the bibliography</a></li>
+  <li><a href="#delete-the-biber-cache" id="toc-delete-the-biber-cache" class="nav-link" data-scroll-target="#delete-the-biber-cache"><span class="header-section-number">5.3</span> Delete the biber cache</a></li>
   </ul></li>
-  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography"><span class="header-section-number">5</span> Bibliography</a>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">6</span> Tables</a>
   <ul class="collapse">
-  <li><a href="#include-an-organization-name-in-citeproc" id="toc-include-an-organization-name-in-citeproc" class="nav-link" data-scroll-target="#include-an-organization-name-in-citeproc"><span class="header-section-number">5.1</span> Include an organization name in citeproc</a></li>
+  <li><a href="#use-tabularray" id="toc-use-tabularray" class="nav-link" data-scroll-target="#use-tabularray"><span class="header-section-number">6.1</span> Use tabularray</a></li>
+  </ul></li>
+  <li><a href="#formatting" id="toc-formatting" class="nav-link" data-scroll-target="#formatting"><span class="header-section-number">7</span> Formatting</a>
+  <ul class="collapse">
+  <li><a href="#wrap-long-lines-in-knitr-output" id="toc-wrap-long-lines-in-knitr-output" class="nav-link" data-scroll-target="#wrap-long-lines-in-knitr-output"><span class="header-section-number">7.1</span> Wrap long lines in knitr output</a></li>
+  </ul></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography"><span class="header-section-number">8</span> Bibliography</a>
+  <ul class="collapse">
+  <li><a href="#include-an-organization-name-in-citeproc" id="toc-include-an-organization-name-in-citeproc" class="nav-link" data-scroll-target="#include-an-organization-name-in-citeproc"><span class="header-section-number">8.1</span> Include an organization name in citeproc</a></li>
+  <li><a href="#remove-3-em-dash-from-bibliography" id="toc-remove-3-em-dash-from-bibliography" class="nav-link" data-scroll-target="#remove-3-em-dash-from-bibliography"><span class="header-section-number">8.2</span> Remove — 3 em dash from bibliography</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -224,16 +241,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
+
 <p>Below are some tips and tricks that I needed to use alongside the regular Quarto settings, which were unfortunately not enough to fully format my thesis just like how I wanted. I had to scour the internet and stackoverflow alongside some latex documentation, and I hope this will help someone one day. Or else it serves as a nice little documentation for future usage.</p>
-<section id="captions" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Captions</h1>
-<section id="add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex"><span class="header-section-number">2.1</span> Add short captions to List of Tables with pandoc filters and LaTeX</h2>
+<section id="acronyms-and-glossaries" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Acronyms and glossaries</h1>
+<p>As of 2024, there are support packages for acronyms and glossaries in Quarto. - https://rchaput.github.io/acronyms/ - https://debruine.github.io/glossary/index.html</p>
+<p>However I still use the acronyms package in LaTeX, as it seems to still be more powerful. Current issue is that I can’t use it in the caption of a longtblr (tabularrray).</p>
+</section>
+<section id="captions" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Captions</h1>
+<section id="add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex"><span class="header-section-number">3.1</span> Add short captions to List of Tables with pandoc filters and LaTeX</h2>
 <p>How to add only part of figure caption in list of figures but keep the full description in the caption.</p>
-<section id="pandoc-filter-short-captions" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="pandoc-filter-short-captions"><span class="header-section-number">2.1.1</span> Pandoc filter : short-captions</h3>
+<section id="pandoc-filter-short-captions" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="pandoc-filter-short-captions"><span class="header-section-number">3.1.1</span> Pandoc filter : short-captions</h3>
 <p>Based on this <a href="https://github.com/quarto-dev/quarto-cli/discussions/3769">discussion</a> which leads to the usage of the <a href="https://github.com/pandoc/lua-filters/tree/master/short-captions">short-captions</a> pandoc filter.</p>
 <p>First add the filter to the yaml header:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filters</span><span class="kw">:</span></span>
@@ -241,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">**Bold caption.** Additional caption. End with a citation. [@citation]</span><span class="co">](figures/figure.png)</span>{#fig:label short-caption="**Short bold caption**."}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://quarto.org/docs/authoring/cross-references.html">Cross-reference</a> in-line with this syntax : <code>@fig-label</code></p>
 </section>
-<section id="captioner-package" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="captioner-package"><span class="header-section-number">2.1.2</span> captioner package</h3>
+<section id="captioner-package" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="captioner-package"><span class="header-section-number">3.1.2</span> captioner package</h3>
 <p>Based on <a href="https://stackoverflow.com/questions/69094228/give-a-single-figure-multiple-captions-in-rmarkdown-pdf-book-output">this thread</a>, or <a href="https://tex.stackexchange.com/questions/83392/change-caption-in-list-of-tables">this one</a> from stackoverflow, you can run this LaTeX code to do so :</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">figure</span>}</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\includegraphics</span>{<span class="ex">figure.jpg</span>} </span>
@@ -255,25 +279,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Then you can crossreference the figure using a LaTeX command : <code>**(Figure \ref{label})**</code></p>
 <p>I originally used this method because I didn’t know about the pandoc filters. I’d have to say the pandoc way is easier to write, and you can have a miniature image in source or visual mode inside R Studio.</p>
 <p>One minor hiccup of the latex way is that if you ever switch to the source pane, any bolded crossreference with latex syntax will be undone. Such as : From <code>**(Figure \ref{fig:vitd3})**</code> to <code>**(Figure** \ref{fig:vitd3})</code> when going to source and back. This is quite annoying. So I’d rather use pandoc from now.</p>
-<p>Update : The cleveref package <a href="#sec-bold-crossref"><span>Section&nbsp;3.1</span></a> solves this problem.</p>
+<p>Update : The cleveref package <a href="#sec-bold-crossref" class="quarto-xref"><span>Section 4.1</span></a> solves this problem.</p>
 </section>
-<section id="built-in-quarto-attribute-using-fig-scap" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="built-in-quarto-attribute-using-fig-scap"><span class="header-section-number">2.1.3</span> Built-in Quarto attribute using fig-scap</h3>
+<section id="built-in-quarto-attribute-using-fig-scap" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="built-in-quarto-attribute-using-fig-scap"><span class="header-section-number">3.1.3</span> Built-in Quarto attribute using fig-scap</h3>
 <p>Unknowingly, the figure attribute <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#figures">fig-scap</a> solves the problem.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="al">![Long caption](R_logo.png)</span>{#fig-label fig-scap="A short caption"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fig-label" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="R_logo.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: Long caption</figcaption>
+<div id="fig-label" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-scap="A short caption">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-label-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="R_logo.png" class="img-fluid figure-img" data-fig-scap="A short caption">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-label-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Long caption
+</figcaption>
 </figure>
 </div>
 </section>
 </section>
 </section>
-<section id="cross-references" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Cross-references</h1>
-<section id="sec-bold-crossref" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-bold-crossref"><span class="header-section-number">3.1</span> Automatically bold cross-reference (Figure, Table #)</h2>
+<section id="cross-references" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Cross-references</h1>
+<section id="sec-bold-crossref" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-bold-crossref"><span class="header-section-number">4.1</span> Automatically bold cross-reference (Figure, Table #)</h2>
 <p>Instead of using <code>(**Figure \ref{figure:stuff}**)</code>, use <code>\cref{figure:stuff}</code> which will automatically put “Figure” or “Table” or something else as appropriate.</p>
 <p>To add automatic bold, add to the preambule :</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">header-includes</span><span class="kw">:</span></span>
@@ -289,8 +317,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The parameter <code>nameinlink</code> could be removed, but it allows the link to span both the number and the cross-referenced material (Table + #) and not just the number, which I find more practical.</p>
 <p><a href="https://tex.stackexchange.com/questions/87903/bold-cross-references">Stackoverflow reference</a></p>
 </section>
-<section id="add-your-table-of-content-to-the-pdf-bookmark" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="add-your-table-of-content-to-the-pdf-bookmark"><span class="header-section-number">3.2</span> Add your table of content to the pdf bookmark</h2>
+<section id="add-your-table-of-content-to-the-pdf-bookmark" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="add-your-table-of-content-to-the-pdf-bookmark"><span class="header-section-number">4.2</span> Add your table of content to the pdf bookmark</h2>
 <p>The generated pdf document has a convenient bookmark function for ease of navigation. The bookmark automatically includes pandoc headers, except your table of content.<br>
 Add the bookmark package to include headers, and then use the following command:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">header-includes</span><span class="kw">:</span></span>
@@ -303,8 +331,8 @@ Add the bookmark package to include headers, and then use the following command:
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\tableofcontents</span>{}</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\newpage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="cross-reference-showing-the-section-number-instead-of-figure" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="cross-reference-showing-the-section-number-instead-of-figure"><span class="header-section-number">3.3</span> Cross-Reference showing the section number instead of figure</h2>
+<section id="cross-reference-showing-the-section-number-instead-of-figure" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="cross-reference-showing-the-section-number-instead-of-figure"><span class="header-section-number">4.3</span> Cross-Reference showing the section number instead of figure</h2>
 <p>Well that’s <a href="https://tex.stackexchange.com/questions/19651/reference-to-a-figure-uses-the-sections-number">simple</a>:</p>
 <blockquote class="blockquote">
 <p>Move <code>\label{fig: hasse}</code> after <code>\caption{Hasse diagram}</code> since <code>\caption</code> has to come before <code>\label</code>. This applies to figures and tables in general. I would not use spaces in label names. Also note Gonzalos comment regarding <code>\centering</code>.</p>
@@ -313,19 +341,19 @@ Add the bookmark package to include headers, and then use the following command:
 <p>Instead of the center environment you could use the command right after \begin{figure}[htbp]; the environment adds extra vertical space which (in most cases) is undesired – Gonzalo Medina</p>
 </blockquote>
 </section>
-<section id="how-to-set-subfigure-to-uppercase" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="how-to-set-subfigure-to-uppercase"><span class="header-section-number">3.4</span> How to set subfigure to uppercase</h2>
+<section id="how-to-set-subfigure-to-uppercase" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="how-to-set-subfigure-to-uppercase"><span class="header-section-number">4.4</span> How to set subfigure to uppercase</h2>
 <p>Use <code>\renewcommand{\thesubfigure}{\Alph{subfigure}}</code> in your preamble.</p>
 <p><a href="https://tex.stackexchange.com/questions/278138/how-can-i-set-the-subfigure-labels-in-latex-to-uppercase">Source.</a></p>
 </section>
-<section id="continuous-figure-numbering" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="continuous-figure-numbering"><span class="header-section-number">3.5</span> Continuous figure numbering</h2>
+<section id="continuous-figure-numbering" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="continuous-figure-numbering"><span class="header-section-number">4.5</span> Continuous figure numbering</h2>
 <p>If you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>- <span class="fu">\counterwithout</span>{figure}{chapter} </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>- <span class="fu">\counterwithout</span>{figure}{section}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is working for me, using scrreport as the document class (KOMA class).</p>
-<section id="explanation" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="explanation"><span class="header-section-number">3.5.1</span> <strong>Explanation</strong> :</h3>
+<section id="explanation" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="explanation"><span class="header-section-number">4.5.1</span> <strong>Explanation</strong> :</h3>
 <p><a href="https://imathworks.com/tex/tex-latex-continuous-v-per-chapter-section-numbering-of-figures-tables-and-other-document-elements/">Changing the numbering of (e.g.) figures involves two modifications</a>:</p>
 <ul>
 <li><p>Redefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;</p></li>
@@ -336,10 +364,10 @@ Add the bookmark package to include headers, and then use the following command:
 </section>
 </section>
 </section>
-<section id="lists-of-figures-and-tables" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Lists of figures and tables</h1>
-<section id="remove-a-section-from-your-table-of-contents-in-pandoc" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">4.1</span> Remove a section from your table of contents in pandoc</h2>
+<section id="lists-of-figures-and-tables" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Lists of figures and tables</h1>
+<section id="remove-a-section-from-your-table-of-contents-in-pandoc" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="remove-a-section-from-your-table-of-contents-in-pandoc"><span class="header-section-number">5.1</span> Remove a section from your table of contents in pandoc</h2>
 <p><a href="https://stackoverflow.com/questions/49573734/do-not-include-section-in-toc-in-pandoc">You need to combine .unlisted with .unnumbered to achieve this</a>, as stated in <a href="https://pandoc.org/MANUAL.html#heading-identifiers">Pandoc documentation</a>.</p>
 <p>(I have looked inside the Pandoc documentation however and I have no idea where that is stated).</p>
 <p>Also, I discovered it was literally marked in the <a href="https://quarto.org/docs/output-formats/pdf-basics.html#table-of-contents">Quarto documentation</a> itself !</p>
@@ -349,8 +377,8 @@ Add the bookmark package to include headers, and then use the following command:
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a># Chapter 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="suppress-a-biblatex-field-in-the-bibliography" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">4.2</span> Suppress a biblatex field in the bibliography</h2>
+<section id="suppress-a-biblatex-field-in-the-bibliography" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="suppress-a-biblatex-field-in-the-bibliography"><span class="header-section-number">5.2</span> Suppress a biblatex field in the bibliography</h2>
 <p>Can be used only in the <a href="https://quarto.org/docs/output-formats/pdf-basics.html#latex-includes">preamble</a>:</p>
 <blockquote class="blockquote">
 <p>If you compile your bibliography with biber, simply add:</p>
@@ -360,30 +388,137 @@ Add the bookmark package to include headers, and then use the following command:
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> \AtEveryBibitem{\clearfield{note}}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://tex.stackexchange.com/questions/280826/how-can-i-remove-common-fields-using-biblatex">How can I remove common fields using <code>biblatex</code>?</a></p>
 </section>
-<section id="delete-the-biber-cache" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="delete-the-biber-cache"><span class="header-section-number">4.3</span> Delete the biber cache</h2>
+<section id="delete-the-biber-cache" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="delete-the-biber-cache"><span class="header-section-number">5.3</span> Delete the biber cache</h2>
 <p>If for some unknown reason, you’re trying to generate your bibliography and Quarto hits you with</p>
-<pre><code>generating bibliography
-  Couldn't load any math lib(s), not even fallback to Calc.pm at C:\Users\Minh-Anh\AppData\Local\Temp\par-4d696e682d416e68\cache-5e43119d746c745befc6eda076997d4ff7d8b07a\19c9b262.pm line 25.
-etc.</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>generating bibliography</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  Couldn't load any math lib(s), not even fallback to Calc.pm at C:<span class="fu">\Users\Minh</span>-Anh<span class="fu">\AppData\Local\Temp\par</span>-4d696e682d416e68<span class="fu">\cache</span>-5e43119d746c745befc6eda076997d4ff7d8b07a<span class="fu">\1</span>9c9b262.pm line 25.</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>etc.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Go to the specified file path and delete the folders. What a headache.</p>
 <p>Also, <code>biber --cache</code> shows you where it is (and if it’s bugged, you’ll be greeted with this awesome bug error).</p>
 </section>
 </section>
-<section id="bibliography" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Bibliography</h1>
-<section id="include-an-organization-name-in-citeproc" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="include-an-organization-name-in-citeproc"><span class="header-section-number">5.1</span> Include an organization name in citeproc</h2>
+<section id="tables" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Tables</h1>
+<section id="use-tabularray" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="use-tabularray"><span class="header-section-number">6.1</span> Use tabularray</h2>
+<p>Modern way of making tables, combining automatic column resizing from tabularx, longtable and working captions (ltablesx has a caption error where shortcaptions doesn’t seem to work).</p>
+<ul>
+<li>Making the table smaller natively sounds more complicated than just using :</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\begingroup</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\small</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">% Insert table code</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\endgroup</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>NewTblrTheme{tinyfr}{</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\SetTblrStyle</span>{head}{font=<span class="fu">\small</span>}</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\DefTblrTemplate</span>{caption-tag}{default}{<span class="fu">\textbf</span>{Table<span class="fu">\hspace</span>{0.25em}<span class="fu">\thetable</span>}}</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\DefTblrTemplate</span>{caption-sep}{default}{<span class="fu">\enskip</span>--<span class="fu">\enskip</span>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\DefTblrTemplate</span>{contfoot-text}{default}{<span class="fu">\scriptsize\itshape\color</span>{gray} (Suite à la page suivante)}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\DefTblrTemplate</span>{conthead-text}{default}{(Suite)}</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">%\begingroup</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">%\small</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">landscape</span>}</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">longtblr</span>}[</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    theme = tinyfr,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    caption = {<span class="fu">\textbf</span>{Opinion des méta-analyses sur les études observationnelles concernant l'existence d'une relation entre la vitamine D et la COVID-19.}},</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    entry = {Opinion des méta-analyses sur les études observationnelles concernant l'existence d'une relation entre la vitamine D et la COVID-19.},</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    label = {tblr:meta-analyses-obs}</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>]{</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    colspec = {lXX},</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    cells= {font = <span class="fu">\small</span>},</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    row{1} = {font=<span class="fu">\bfseries</span> <span class="fu">\small</span>, halign=c},</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    rowhead = 1</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="fu">\toprule</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>Étude &amp; Design et taille de l'échantillon &amp; Opinion <span class="fu">\\</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="fu">\midrule</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="formatting" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Formatting</h1>
+<section id="wrap-long-lines-in-knitr-output" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="wrap-long-lines-in-knitr-output"><span class="header-section-number">7.1</span> Wrap long lines in knitr output</h2>
+<ul>
+<li>Copy pasted from yihui’s knitr example https://github.com/yihui/knitr-examples/blob/master/077-wrap-output.Rmd</li>
+<li>There is <a href="https://github.com/quarto-dev/quarto-cli/discussions/3693">no current option for Quarto</a></li>
+</ul>
+<p>Long lines in the output will not be (hard-)wrapped automatically unless you break them manually.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="st">'## "stx2A; shiga-like toxin II A subunit encoded by bacteriophage BP-933W; K11006 shiga toxin subunit A" '</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "## \"stx2A; shiga-like toxin II A subunit encoded by bacteriophage BP-933W; K11006 shiga toxin subunit A\" "</code></pre>
+</div>
+</div>
+<p>Perhaps you see it is wrapped in RStudio, but that is because <code>&lt;pre&gt;</code> has the CSS attribute <code>white-space: pre-wrap;</code>. For LaTeX output, the output is in the <code>verbatim</code> environment by default, which will not wrap long lines (everything is shown as is).</p>
+<p>You can redefine the output hook function so that you can instruct some chunks to hard-wrap their output lines, e.g.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>hook_output <span class="ot">=</span> knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">'output'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">output =</span> <span class="cf">function</span>(x, options) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># this hook is used only when the linewidth option is not NULL</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(n <span class="ot">&lt;-</span> options<span class="sc">$</span>linewidth)) {</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> xfun<span class="sc">::</span><span class="fu">split_lines</span>(x)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># any lines wider than n should be wrapped</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">any</span>(<span class="fu">nchar</span>(x) <span class="sc">&gt;</span> n)) x <span class="ot">=</span> <span class="fu">strwrap</span>(x, <span class="at">width =</span> n)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hook_output</span>(x, options)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now see the output of <code>a</code> (note <code>linewidth</code> is not a default <strong>knitr</strong> option):</p>
+<div class="cell" data-linewidth="60">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "## \"stx2A; shiga-like toxin II A subunit encoded by
+bacteriophage BP-933W; K11006 shiga toxin subunit A\" "</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="bibliography" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Bibliography</h1>
+<section id="include-an-organization-name-in-citeproc" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="include-an-organization-name-in-citeproc"><span class="header-section-number">8.1</span> Include an organization name in citeproc</h2>
 <p>Just include double brackets around your {{organization}} and citeproc will format correctly.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>@article{IOM.2011.org,</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>year = {2011},</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>title = {{Dietary Reference Intakes for Calcium and Vitamin D}},</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>author = {{Institute of Medicine}},</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>journal = {The National Academies Press},</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>doi = {10.17226/13050},</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>pages = {1115},</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>keywords = {},</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Citation of author : <code>\autocite{{D’Ecclesiis.2022}}</code></p>
+<p><a href="https://tex.stackexchange.com/questions/149769/how-to-cite-organizations-name-with-space-between-words">https://tex.stackexchange.com/questions/149769/how-to-cite-organizations-name-with-space-between-words</a></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>@article{IOM.2011.org,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>year = {2011},</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>title = {{Dietary Reference Intakes for Calcium and Vitamin D}},</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>author = {{Institute of Medicine}},</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>journal = {The National Academies Press},</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>doi = {10.17226/13050},</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>pages = {1115},</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>keywords = {},</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>@article{D’Ecclesiis.2022, </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>year = {2022}, </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>rating = {5}, </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>title = {{Vitamin D and SARS-CoV2 infection, severity and mortality: A systematic review and meta-analysis}}, </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>author = {D’Ecclesiis}</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>journal = {PLoS ONE}, </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>doi = {10.1371/journal.pone.0268396}, </span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>pmid = {35793346}, </span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>pmcid = {PMC9258852}, </span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>pages = {e0268396}, </span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>number = {7}, </span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>volume = {17}, </span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="remove-3-em-dash-from-bibliography" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="remove-3-em-dash-from-bibliography"><span class="header-section-number">8.2</span> Remove — 3 em dash from bibliography</h2>
+<p>This is actually the intended, default behavior of biblatex-chicago package:</p>
+<blockquote class="blockquote">
+<p>The Manual doesn’t clarify how to treat multiple works by the same author, in one or more of which their name doesn’t appear on the title page. By default, biblatex-chicago will, after the first appearance in the reference list, replace identical authors with the 3-em dash, regardless of any authortype field that may be present. If you want to distinguish between works certainly written by and works merely ascribed to a given author, then you can use the dashed option in the options field of individual entries, and possibly also a sortname, to get the results you want.</p>
+</blockquote>
+<p>Example when using biblatex : remove doi, isbn and 3 em dash for repeated authors</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>header-includes:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>- <span class="bu">\usepackage</span>[authordate, backend=biber, doi=false, isbn=false, dashed=false]{<span class="ex">biblatex-chicago</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -425,18 +560,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -468,11 +592,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -482,8 +645,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -495,7 +667,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -539,6 +834,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -564,6 +860,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -625,17 +947,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../index.html" class="pagination-link">
+      <a href="../../index.html" class="pagination-link" aria-label="Preface">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/git in R/git_in_r.html" class="pagination-link">
+      <a href="../../chapters/git in R/git_in_r.html" class="pagination-link" aria-label="Git in R">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Git in R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

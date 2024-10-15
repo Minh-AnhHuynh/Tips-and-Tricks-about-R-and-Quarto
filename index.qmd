@@ -1,4 +1,4 @@
 ## Preface {.unnumbered}
 
 
-This is my homecooked R and Quarto tips and tricks that I found while writing my thesis and debugging my stuff that I haven't found in the basic tutorial and guides. Perhaps will it serve to help someone someday.h
+This is my homecooked R and Quarto tips and tricks that I found while writing my thesis and debugging my stuff that I haven't found in the basic tutorial and guides. This serves as my personal quick reference so that I don't look for guides again when I've already found the solution. Perhaps it can be helpful as well to others.

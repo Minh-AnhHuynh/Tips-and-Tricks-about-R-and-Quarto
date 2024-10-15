@@ -25,8 +25,16 @@ use_github(private = TRUE) # Create github repo, private or not
 https://happygitwithr.com/
 This is the best [guide for Git in R](https://happygitwithr.com/) currently.
 
+### Create a PAT
 
 How to create a [Personal Access Token](https://github.com/r-lib/gitcreds) (PAT).
+
+
+```{r, eval=FALSE, include=TRUE}
+library(gitcreds)
+gitcreds_get()
+gitcreds_set()
+```
 
 
 
