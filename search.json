@@ -1,114 +1,212 @@
 [
   {
-    "objectID": "index.html#preface",
-    "href": "index.html#preface",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Tips and Tricks about R and Quarto",
-    "section": "Preface",
-    "text": "Preface\nThis is my homecooked R and Quarto tips and tricks that I found while writing my thesis and debugging my stuff that I haven’t found in the basic tutorial and guides. This serves as my personal quick reference so that I don’t look for guides again when I’ve already found the solution. Perhaps it can be helpful as well to others."
+    "section": "",
+    "text": "Preface\nThis is my homecooked R and Quarto tips and tricks that I found while writing my thesis and debugging my stuff that I haven’t found in the basic tutorial and guides. This serves as my personal quick reference so that I don’t look for guides again when I’ve already found the solution. Perhaps it can be helpful as well to others.",
+    "crumbs": [
+      "Preface"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html",
     "href": "chapters/thesis/thesis.html",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
     "section": "",
-    "text": "2 Captions"
+    "text": "2 Acronyms and glossaries\nAs of 2024, there are support packages for acronyms and glossaries in Quarto. - https://rchaput.github.io/acronyms/ - https://debruine.github.io/glossary/index.html\nHowever I still use the acronyms package in LaTeX, as it seems to still be more powerful. Current issue is that I can’t use it in the caption of a longtblr (tabularrray).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex",
     "href": "chapters/thesis/thesis.html#add-short-captions-to-list-of-tables-with-pandoc-filters-and-latex",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "2.1 Add short captions to List of Tables with pandoc filters and LaTeX",
-    "text": "2.1 Add short captions to List of Tables with pandoc filters and LaTeX\nHow to add only part of figure caption in list of figures but keep the full description in the caption.\n\n2.1.1 Pandoc filter : short-captions\nBased on this discussion which leads to the usage of the short-captions pandoc filter.\nFirst add the filter to the yaml header:\nfilters:\n  - \"pandoc-filters/short-captions.lua\"\n![**Bold caption.** Additional caption. End with a citation. [@citation]](figures/figure.png){#fig:label short-caption=\"**Short bold caption**.\"}\nCross-reference in-line with this syntax : @fig-label\n\n\n2.1.2 captioner package\nBased on this thread, or this one from stackoverflow, you can run this LaTeX code to do so :\n\\begin{figure}\n\\includegraphics{figure.jpg} \n\\caption[\\textbf{Bold caption.}]\n{\\textbf{Figure or table description. (\\cite{Meza-Meza.2020}) or Adapted from \\textcite{Author}}\n\\label{fig-label}\n\\end{figure}\nNote that I return to a new line to make it easier to read.\nWrite \\listoffigures to generate the list of figures.\nThen you can crossreference the figure using a LaTeX command : **(Figure \\ref{label})**\nI originally used this method because I didn’t know about the pandoc filters. I’d have to say the pandoc way is easier to write, and you can have a miniature image in source or visual mode inside R Studio.\nOne minor hiccup of the latex way is that if you ever switch to the source pane, any bolded crossreference with latex syntax will be undone. Such as : From **(Figure \\ref{fig:vitd3})** to **(Figure** \\ref{fig:vitd3}) when going to source and back. This is quite annoying. So I’d rather use pandoc from now.\nUpdate : The cleveref package Section 3.1 solves this problem.\n\n\n2.1.3 Built-in Quarto attribute using fig-scap\nUnknowingly, the figure attribute fig-scap solves the problem.\n![Long caption](R_logo.png){#fig-label fig-scap=\"A short caption\"}\n\n\n\nFigure 2.1: Long caption"
+    "section": "3.1 Add short captions to List of Tables with pandoc filters and LaTeX",
+    "text": "3.1 Add short captions to List of Tables with pandoc filters and LaTeX\nHow to add only part of figure caption in list of figures but keep the full description in the caption.\n\n3.1.1 Pandoc filter : short-captions\nBased on this discussion which leads to the usage of the short-captions pandoc filter.\nFirst add the filter to the yaml header:\nfilters:\n  - \"pandoc-filters/short-captions.lua\"\n![**Bold caption.** Additional caption. End with a citation. [@citation]](figures/figure.png){#fig:label short-caption=\"**Short bold caption**.\"}\nCross-reference in-line with this syntax : @fig-label\n\n\n3.1.2 captioner package\nBased on this thread, or this one from stackoverflow, you can run this LaTeX code to do so :\n\\begin{figure}\n\\includegraphics{figure.jpg} \n\\caption[\\textbf{Bold caption.}]\n{\\textbf{Figure or table description. (\\cite{Meza-Meza.2020}) or Adapted from \\textcite{Author}}\n\\label{fig-label}\n\\end{figure}\nNote that I return to a new line to make it easier to read.\nWrite \\listoffigures to generate the list of figures.\nThen you can crossreference the figure using a LaTeX command : **(Figure \\ref{label})**\nI originally used this method because I didn’t know about the pandoc filters. I’d have to say the pandoc way is easier to write, and you can have a miniature image in source or visual mode inside R Studio.\nOne minor hiccup of the latex way is that if you ever switch to the source pane, any bolded crossreference with latex syntax will be undone. Such as : From **(Figure \\ref{fig:vitd3})** to **(Figure** \\ref{fig:vitd3}) when going to source and back. This is quite annoying. So I’d rather use pandoc from now.\nUpdate : The cleveref package Section 4.1 solves this problem.\n\n\n3.1.3 Built-in Quarto attribute using fig-scap\nUnknowingly, the figure attribute fig-scap solves the problem.\n![Long caption](R_logo.png){#fig-label fig-scap=\"A short caption\"}\n\n\n\n\n\n\nFigure 3.1: Long caption",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#sec-bold-crossref",
     "href": "chapters/thesis/thesis.html#sec-bold-crossref",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "3.1 Automatically bold cross-reference (Figure, Table #)",
-    "text": "3.1 Automatically bold cross-reference (Figure, Table #)\nInstead of using (**Figure \\ref{figure:stuff}**), use \\cref{figure:stuff} which will automatically put “Figure” or “Table” or something else as appropriate.\nTo add automatic bold, add to the preambule :\nheader-includes:\n- \\usepackage[capitalise,noabbrev, nameinlink]{cleveref} # Allows \\cref{} to cite latex table as \"Table 3\"\n# Specify which cross-reference should automatically be bolded : Tables and Figures\n# Use \\cref{} ; For some reason this only works with this exact disposition :\n# Only #1, nameinlink and each of the reference specified. namelink + #1#2#3 would give an error.\n- \\crefdefaultlabelformat{#2\\textbf{#1}#3} # &lt;-- Only #1 in \\textbf\n- \\crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\Crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}} \n- \\Crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}}\nThe parameter nameinlink could be removed, but it allows the link to span both the number and the cross-referenced material (Table + #) and not just the number, which I find more practical.\nStackoverflow reference"
+    "section": "4.1 Automatically bold cross-reference (Figure, Table #)",
+    "text": "4.1 Automatically bold cross-reference (Figure, Table #)\nInstead of using (**Figure \\ref{figure:stuff}**), use \\cref{figure:stuff} which will automatically put “Figure” or “Table” or something else as appropriate.\nTo add automatic bold, add to the preambule :\nheader-includes:\n- \\usepackage[capitalise,noabbrev, nameinlink]{cleveref} # Allows \\cref{} to cite latex table as \"Table 3\"\n# Specify which cross-reference should automatically be bolded : Tables and Figures\n# Use \\cref{} ; For some reason this only works with this exact disposition :\n# Only #1, nameinlink and each of the reference specified. namelink + #1#2#3 would give an error.\n- \\crefdefaultlabelformat{#2\\textbf{#1}#3} # &lt;-- Only #1 in \\textbf\n- \\crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\Crefname{table}{\\textbf{Table}}{\\textbf{Tables}}\n- \\crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}} \n- \\Crefname{figure}{\\textbf{Figure}}{\\textbf{Figures}}\nThe parameter nameinlink could be removed, but it allows the link to span both the number and the cross-referenced material (Table + #) and not just the number, which I find more practical.\nStackoverflow reference",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#add-your-table-of-content-to-the-pdf-bookmark",
     "href": "chapters/thesis/thesis.html#add-your-table-of-content-to-the-pdf-bookmark",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "3.2 Add your table of content to the pdf bookmark",
-    "text": "3.2 Add your table of content to the pdf bookmark\nThe generated pdf document has a convenient bookmark function for ease of navigation. The bookmark automatically includes pandoc headers, except your table of content.\nAdd the bookmark package to include headers, and then use the following command:\nheader-includes:\n- \\usepackage{setspace} # Example of another package used. This syntax will not work with only one package.\n- \\usepackage{bookmark}\n% Add the command just before the toc.\n\\pdfbookmark[section]{\\contentsname}{toc}\n% Next command is to rename the table of content\n\\renewcommand{\\contentsname}{Table des matières}\n\\tableofcontents{}\n\\newpage"
+    "section": "4.2 Add your table of content to the pdf bookmark",
+    "text": "4.2 Add your table of content to the pdf bookmark\nThe generated pdf document has a convenient bookmark function for ease of navigation. The bookmark automatically includes pandoc headers, except your table of content.\nAdd the bookmark package to include headers, and then use the following command:\nheader-includes:\n- \\usepackage{setspace} # Example of another package used. This syntax will not work with only one package.\n- \\usepackage{bookmark}\n% Add the command just before the toc.\n\\pdfbookmark[section]{\\contentsname}{toc}\n% Next command is to rename the table of content\n\\renewcommand{\\contentsname}{Table des matières}\n\\tableofcontents{}\n\\newpage",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#cross-reference-showing-the-section-number-instead-of-figure",
     "href": "chapters/thesis/thesis.html#cross-reference-showing-the-section-number-instead-of-figure",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "3.3 Cross-Reference showing the section number instead of figure",
-    "text": "3.3 Cross-Reference showing the section number instead of figure\nWell that’s simple:\n\nMove \\label{fig: hasse} after \\caption{Hasse diagram} since \\caption has to come before \\label. This applies to figures and tables in general. I would not use spaces in label names. Also note Gonzalos comment regarding \\centering.\n\n\nInstead of the center environment you could use the command right after \\begin{figure}[htbp]; the environment adds extra vertical space which (in most cases) is undesired – Gonzalo Medina"
+    "section": "4.3 Cross-Reference showing the section number instead of figure",
+    "text": "4.3 Cross-Reference showing the section number instead of figure\nWell that’s simple:\n\nMove \\label{fig: hasse} after \\caption{Hasse diagram} since \\caption has to come before \\label. This applies to figures and tables in general. I would not use spaces in label names. Also note Gonzalos comment regarding \\centering.\n\n\nInstead of the center environment you could use the command right after \\begin{figure}[htbp]; the environment adds extra vertical space which (in most cases) is undesired – Gonzalo Medina",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#how-to-set-subfigure-to-uppercase",
     "href": "chapters/thesis/thesis.html#how-to-set-subfigure-to-uppercase",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "3.4 How to set subfigure to uppercase",
-    "text": "3.4 How to set subfigure to uppercase\nUse \\renewcommand{\\thesubfigure}{\\Alph{subfigure}} in your preamble.\nSource."
+    "section": "4.4 How to set subfigure to uppercase",
+    "text": "4.4 How to set subfigure to uppercase\nUse \\renewcommand{\\thesubfigure}{\\Alph{subfigure}} in your preamble.\nSource.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#continuous-figure-numbering",
     "href": "chapters/thesis/thesis.html#continuous-figure-numbering",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "3.5 Continuous figure numbering",
-    "text": "3.5 Continuous figure numbering\nIf you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :\n- \\counterwithout{figure}{chapter} \n- \\counterwithout{figure}{section}\nThis is working for me, using scrreport as the document class (KOMA class).\n\n3.5.1 Explanation :\nChanging the numbering of (e.g.) figures involves two modifications:\n\nRedefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;\nRedefining the “appearance” of the figure counter (), i.e., removing (or adding) the chapter/section prefix.\n\n\\counterwithout{somecounter}{anothercounter}\n\\counterwithout{somecounter}{anothercounter} removes the link between somecounter and anothercounter so that they are independent. For any pair of counters, you can switch between using \\counterwithout and \\counterwithin, as the following example shows for the example and section counters—you can open this example in Overleaf using the link provided below the code."
+    "section": "4.5 Continuous figure numbering",
+    "text": "4.5 Continuous figure numbering\nIf you want something like Figure 1, Figure 2 instead of Figure 1.1, Figure 1.2, you need to use the following latex command :\n- \\counterwithout{figure}{chapter} \n- \\counterwithout{figure}{section}\nThis is working for me, using scrreport as the document class (KOMA class).\n\n4.5.1 Explanation :\nChanging the numbering of (e.g.) figures involves two modifications:\n\nRedefining whether or not the figure counter will be reset whenever the chapter/section counter is incremented;\nRedefining the “appearance” of the figure counter (), i.e., removing (or adding) the chapter/section prefix.\n\n\\counterwithout{somecounter}{anothercounter}\n\\counterwithout{somecounter}{anothercounter} removes the link between somecounter and anothercounter so that they are independent. For any pair of counters, you can switch between using \\counterwithout and \\counterwithin, as the following example shows for the example and section counters—you can open this example in Overleaf using the link provided below the code.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
     "href": "chapters/thesis/thesis.html#remove-a-section-from-your-table-of-contents-in-pandoc",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "4.1 Remove a section from your table of contents in pandoc",
-    "text": "4.1 Remove a section from your table of contents in pandoc\nYou need to combine .unlisted with .unnumbered to achieve this, as stated in Pandoc documentation.\n(I have looked inside the Pandoc documentation however and I have no idea where that is stated).\nAlso, I discovered it was literally marked in the Quarto documentation itself !\n# Abstract {.unnumbered .unlisted}\n\n# Acknowledgements {.unnumbered .unlisted}\n\n# Chapter 1"
+    "section": "5.1 Remove a section from your table of contents in pandoc",
+    "text": "5.1 Remove a section from your table of contents in pandoc\nYou need to combine .unlisted with .unnumbered to achieve this, as stated in Pandoc documentation.\n(I have looked inside the Pandoc documentation however and I have no idea where that is stated).\nAlso, I discovered it was literally marked in the Quarto documentation itself !\n# Abstract {.unnumbered .unlisted}\n\n# Acknowledgements {.unnumbered .unlisted}\n\n# Chapter 1",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#suppress-a-biblatex-field-in-the-bibliography",
     "href": "chapters/thesis/thesis.html#suppress-a-biblatex-field-in-the-bibliography",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "4.2 Suppress a biblatex field in the bibliography",
-    "text": "4.2 Suppress a biblatex field in the bibliography\nCan be used only in the preamble:\n\nIf you compile your bibliography with biber, simply add:\n\nheader-includes:\n# Define a command to remove the \"note\" field from the bibliography\n- \\AtEveryBibitem{\\clearfield{note}}\nHow can I remove common fields using biblatex?"
+    "section": "5.2 Suppress a biblatex field in the bibliography",
+    "text": "5.2 Suppress a biblatex field in the bibliography\nCan be used only in the preamble:\n\nIf you compile your bibliography with biber, simply add:\n\nheader-includes:\n# Define a command to remove the \"note\" field from the bibliography\n- \\AtEveryBibitem{\\clearfield{note}}\nHow can I remove common fields using biblatex?",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#delete-the-biber-cache",
     "href": "chapters/thesis/thesis.html#delete-the-biber-cache",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "4.3 Delete the biber cache",
-    "text": "4.3 Delete the biber cache\nIf for some unknown reason, you’re trying to generate your bibliography and Quarto hits you with\ngenerating bibliography\n  Couldn't load any math lib(s), not even fallback to Calc.pm at C:\\Users\\Minh-Anh\\AppData\\Local\\Temp\\par-4d696e682d416e68\\cache-5e43119d746c745befc6eda076997d4ff7d8b07a\\19c9b262.pm line 25.\netc.\nGo to the specified file path and delete the folders. What a headache.\nAlso, biber --cache shows you where it is (and if it’s bugged, you’ll be greeted with this awesome bug error)."
+    "section": "5.3 Delete the biber cache",
+    "text": "5.3 Delete the biber cache\nIf for some unknown reason, you’re trying to generate your bibliography and Quarto hits you with\ngenerating bibliography\n  Couldn't load any math lib(s), not even fallback to Calc.pm at C:\\Users\\Minh-Anh\\AppData\\Local\\Temp\\par-4d696e682d416e68\\cache-5e43119d746c745befc6eda076997d4ff7d8b07a\\19c9b262.pm line 25.\netc.\nGo to the specified file path and delete the folders. What a headache.\nAlso, biber --cache shows you where it is (and if it’s bugged, you’ll be greeted with this awesome bug error).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/thesis/thesis.html#use-tabularray",
+    "href": "chapters/thesis/thesis.html#use-tabularray",
+    "title": "1  Tips and Trick to write your Thesis in Quarto",
+    "section": "6.1 Use tabularray",
+    "text": "6.1 Use tabularray\nModern way of making tables, combining automatic column resizing from tabularx, longtable and working captions (ltablesx has a caption error where shortcaptions doesn’t seem to work).\n\nMaking the table smaller natively sounds more complicated than just using :\n\n\\begingroup\n\\small\n% Insert table code\n\\endgroup\nNewTblrTheme{tinyfr}{\n\\SetTblrStyle{head}{font=\\small}\n\\DefTblrTemplate{caption-tag}{default}{\\textbf{Table\\hspace{0.25em}\\thetable}}\n\\DefTblrTemplate{caption-sep}{default}{\\enskip--\\enskip}\n\\DefTblrTemplate{contfoot-text}{default}{\\scriptsize\\itshape\\color{gray} (Suite à la page suivante)}\n\\DefTblrTemplate{conthead-text}{default}{(Suite)}\n}\n%\\begingroup\n%\\small\n\\begin{landscape}\n\\begin{longtblr}[\n    theme = tinyfr,\n    caption = {\\textbf{Opinion des méta-analyses sur les études observationnelles concernant l'existence d'une relation entre la vitamine D et la COVID-19.}},\n    entry = {Opinion des méta-analyses sur les études observationnelles concernant l'existence d'une relation entre la vitamine D et la COVID-19.},\n    label = {tblr:meta-analyses-obs}\n]{\n    colspec = {lXX},\n    cells= {font = \\small},\n    row{1} = {font=\\bfseries \\small, halign=c},\n    rowhead = 1\n}\n\n\\toprule\nÉtude & Design et taille de l'échantillon & Opinion \\\\\n\\midrule",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/thesis/thesis.html#wrap-long-lines-in-knitr-output",
+    "href": "chapters/thesis/thesis.html#wrap-long-lines-in-knitr-output",
+    "title": "1  Tips and Trick to write your Thesis in Quarto",
+    "section": "7.1 Wrap long lines in knitr output",
+    "text": "7.1 Wrap long lines in knitr output\n\nCopy pasted from yihui’s knitr example https://github.com/yihui/knitr-examples/blob/master/077-wrap-output.Rmd\nThere is no current option for Quarto\n\nLong lines in the output will not be (hard-)wrapped automatically unless you break them manually.\n\na &lt;- '## \"stx2A; shiga-like toxin II A subunit encoded by bacteriophage BP-933W; K11006 shiga toxin subunit A\" '\na\n\n[1] \"## \\\"stx2A; shiga-like toxin II A subunit encoded by bacteriophage BP-933W; K11006 shiga toxin subunit A\\\" \"\n\n\nPerhaps you see it is wrapped in RStudio, but that is because &lt;pre&gt; has the CSS attribute white-space: pre-wrap;. For LaTeX output, the output is in the verbatim environment by default, which will not wrap long lines (everything is shown as is).\nYou can redefine the output hook function so that you can instruct some chunks to hard-wrap their output lines, e.g.\n\nlibrary(knitr)\nhook_output = knit_hooks$get('output')\nknit_hooks$set(output = function(x, options) {\n  # this hook is used only when the linewidth option is not NULL\n  if (!is.null(n &lt;- options$linewidth)) {\n    x = xfun::split_lines(x)\n    # any lines wider than n should be wrapped\n    if (any(nchar(x) &gt; n)) x = strwrap(x, width = n)\n    x = paste(x, collapse = '\\n')\n  }\n  hook_output(x, options)\n})\n\nNow see the output of a (note linewidth is not a default knitr option):\n\na\n\n[1] \"## \\\"stx2A; shiga-like toxin II A subunit encoded by\nbacteriophage BP-933W; K11006 shiga toxin subunit A\\\" \"",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
   },
   {
     "objectID": "chapters/thesis/thesis.html#include-an-organization-name-in-citeproc",
     "href": "chapters/thesis/thesis.html#include-an-organization-name-in-citeproc",
     "title": "1  Tips and Trick to write your Thesis in Quarto",
-    "section": "5.1 Include an organization name in citeproc",
-    "text": "5.1 Include an organization name in citeproc\nJust include double brackets around your {{organization}} and citeproc will format correctly.\n@article{IOM.2011.org,\nyear = {2011},\ntitle = {{Dietary Reference Intakes for Calcium and Vitamin D}},\nauthor = {{Institute of Medicine}},\njournal = {The National Academies Press},\ndoi = {10.17226/13050},\npages = {1115},\nkeywords = {},\n}"
+    "section": "8.1 Include an organization name in citeproc",
+    "text": "8.1 Include an organization name in citeproc\nJust include double brackets around your {{organization}} and citeproc will format correctly.\nCitation of author : \\autocite{{D’Ecclesiis.2022}}\nhttps://tex.stackexchange.com/questions/149769/how-to-cite-organizations-name-with-space-between-words\n@article{IOM.2011.org,\nyear = {2011},\ntitle = {{Dietary Reference Intakes for Calcium and Vitamin D}},\nauthor = {{Institute of Medicine}},\njournal = {The National Academies Press},\ndoi = {10.17226/13050},\npages = {1115},\nkeywords = {},\n}\n\n@article{D’Ecclesiis.2022, \nyear = {2022}, \nrating = {5}, \ntitle = {{Vitamin D and SARS-CoV2 infection, severity and mortality: A systematic review and meta-analysis}}, \nauthor = {D’Ecclesiis}\njournal = {PLoS ONE}, \ndoi = {10.1371/journal.pone.0268396}, \npmid = {35793346}, \npmcid = {PMC9258852}, \npages = {e0268396}, \nnumber = {7}, \nvolume = {17}, \n}",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/thesis/thesis.html#remove-3-em-dash-from-bibliography",
+    "href": "chapters/thesis/thesis.html#remove-3-em-dash-from-bibliography",
+    "title": "1  Tips and Trick to write your Thesis in Quarto",
+    "section": "8.2 Remove — 3 em dash from bibliography",
+    "text": "8.2 Remove — 3 em dash from bibliography\nThis is actually the intended, default behavior of biblatex-chicago package:\n\nThe Manual doesn’t clarify how to treat multiple works by the same author, in one or more of which their name doesn’t appear on the title page. By default, biblatex-chicago will, after the first appearance in the reference list, replace identical authors with the 3-em dash, regardless of any authortype field that may be present. If you want to distinguish between works certainly written by and works merely ascribed to a given author, then you can use the dashed option in the options field of individual entries, and possibly also a sortname, to get the results you want.\n\nExample when using biblatex : remove doi, isbn and 3 em dash for repeated authors\nheader-includes:\n- \\usepackage[authordate, backend=biber, doi=false, isbn=false, dashed=false]{biblatex-chicago}",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tips and Trick to write your Thesis in Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/git in R/git_in_r.html",
+    "href": "chapters/git in R/git_in_r.html",
+    "title": "2  Git in R",
+    "section": "",
+    "text": "2.1 Setting up Git\nQuick settings :\nlibrary(usethis) ## or library(devtools)\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.com\")\n\n# check by running a git situation-report: \n#   - your user.name and user.email should appear in global Git config \ngit_sitrep()\n\nuse_git() # Initialize git\nuse_github(private = TRUE) # Create github repo, private or not\nhttps://happygitwithr.com/ This is the best guide for Git in R currently.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Git in R</span>"
+    ]
   },
   {
     "objectID": "chapters/git in R/git_in_r.html#setting-up-git",
     "href": "chapters/git in R/git_in_r.html#setting-up-git",
     "title": "2  Git in R",
-    "section": "2.1 Setting up Git",
-    "text": "2.1 Setting up Git\nQuick settings :\n\nHave a Github account\nOpen an R project.\nUse package usethis :\n\n\nlibrary(usethis) ## or library(devtools)\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.com\")\n\n# check by running a git situation-report: \n#   - your user.name and user.email should appear in global Git config \ngit_sitrep()\n\nuse_git() # Initialize git\nuse_github(private = TRUE) # Create github repo, private or not\n\nhttps://happygitwithr.com/ This is the best guide for Git in R currently.\n\n2.1.1 Create a PAT\nHow to create a Personal Access Token (PAT).\n\nlibrary(gitcreds)\ngitcreds_get()\ngitcreds_set()"
+    "section": "",
+    "text": "Have a Github account\nOpen an R project.\nUse package usethis :\n\n\n\n\n2.1.1 Create a PAT\nHow to create a Personal Access Token (PAT).\n\nlibrary(gitcreds)\ngitcreds_get()\ngitcreds_set()",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Git in R</span>"
+    ]
   },
   {
     "objectID": "chapters/git in R/git_in_r.html#using-git-with-multiple-local-accounts",
     "href": "chapters/git in R/git_in_r.html#using-git-with-multiple-local-accounts",
     "title": "2  Git in R",
     "section": "2.2 Using Git with multiple local accounts",
-    "text": "2.2 Using Git with multiple local accounts\nThe idea behind using Git with multiple accounts including multiple Github account is to be able to separate your personal from your office work.\nHappy Git with R recommends HTTPS instead of SSH. Happy Git with R\nThere’s plenty of guides that explain how to do it:\n\nHow To Work With Multiple Github Accounts on a single Machine\nhttps://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/\n\nUse usethis::git_sitrep() to troubleshoot things.\nHowever they fail to mention one thing:\nThe current git (local) protocol used is determined by the remote link of the current git repo.\nUse git remote -v\nAs such, you can easily have a main account with PAT, and have a local git folder with SSH for your other account. You just need to choose the correct protocol."
+    "text": "2.2 Using Git with multiple local accounts\nThe idea behind using Git with multiple accounts including multiple Github account is to be able to separate your personal from your office work.\nHappy Git with R recommends HTTPS instead of SSH. Happy Git with R\nThere’s plenty of guides that explain how to do it:\n\nHow To Work With Multiple Github Accounts on a single Machine\nhttps://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/\n\nUse usethis::git_sitrep() to troubleshoot things.\nHowever they fail to mention one thing:\nThe current git (local) protocol used is determined by the remote link of the current git repo.\nUse git remote -v\nAs such, you can easily have a main account with PAT, and have a local git folder with SSH for your other account. You just need to choose the correct protocol.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Git in R</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/ggplot2/ggplot2.html",
+    "href": "chapters/ggplot2/ggplot2.html",
+    "title": "3  ggplot2",
+    "section": "",
+    "text": "3.1 Non Standard Evaluation - Programming with ggplot2",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ggplot2</span>"
+    ]
   },
   {
     "objectID": "chapters/ggplot2/ggplot2.html#non-standard-evaluation---programming-with-ggplot2",
     "href": "chapters/ggplot2/ggplot2.html#non-standard-evaluation---programming-with-ggplot2",
     "title": "3  ggplot2",
-    "section": "3.1 Non Standard Evaluation - Programming with ggplot2",
-    "text": "3.1 Non Standard Evaluation - Programming with ggplot2\n\n3.1.1 Problem with programming color inside\naes uses tidy-evaluation\n\nlibrarian::shelf(ggplot2, ragg, quiet = TRUE)\n# Sample data\ndf &lt;- data.frame(\n  a = seq(0, 100, by = 10),\n  b = seq(100, 200, by = 10)\n)\n\n# Your base plot\nbase_plot &lt;- ggplot(data.frame(x = rnorm(100)), aes(x)) +\n  geom_density() +\n  theme_minimal()\n\n# Create the plot\nplot &lt;- base_plot + geom_function(\n  fun = dnorm,\n  show.legend = TRUE,\n  aes(color = \"ATK\"),\n  colour = \"blue\"\n) + scale_colour_manual(name = \"Legend\", values = c(\"Line\" = \"red\"))\n\n# Display the plot\nprint(plot)\n\n\n\n\nWhy is the plot not displaying the legend with a red color ?\n\nChatGPT: The issue you’re encountering with the legend not displaying the color red and the legend being removed when you include the colour = “blue” argument in the geom_function is related to how aesthetics are mapped in ggplot2. When you use aes(color = “line”), you are mapping the color aesthetic to a constant string “line”, which means that all the points or lines will have the same color, and that color will be determined by the color scale associated with the “line” category. However, when you include colour = “blue” within the geom_function, you are effectively overriding the color aesthetic that you set with aes(color = “line”). This means that all elements drawn by this specific geom_function will be colored in blue, and ggplot2 will not create a legend because there’s no mapping of aesthetics that varies. If you want to specify a different color for this specific geom_function and still have a legend, you can do the following:\n\n\nbase_plot + \n  geom_function(\n    fun = dnorm,\n    aes(color = \"line\"),\n    show.legend = TRUE\n  ) +\n  scale_colour_manual(\n    name = \"Legend\",\n    values = c(\"line\" = \"red\")\n  )\n\n\n\n\nMore information : Indirectly referring to a variable"
+    "section": "",
+    "text": "3.1.1 Problem with programming color inside\naes uses tidy-evaluation\n\nlibrarian::shelf(ggplot2, ragg, quiet = TRUE)\n\n\n  These packages will be installed:\n\n  'ggplot2', 'ragg'\n\n  It may take some time.\n\n\ninstallation des dépendances 'gtable', 'isoband', 'textshaping'\n\n\n\n  Une version binaire est disponible mais la version du source est plus\n  récente:\n       binary source needs_compilation\ngtable  0.3.5  0.3.6             FALSE\n\nle package 'isoband' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'textshaping' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'ggplot2' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'ragg' a été décompressé et les sommes MD5 ont été vérifiées avec succés\n\n\ninstallation du package source 'gtable'\n\n# Sample data\ndf &lt;- data.frame(\n  a = seq(0, 100, by = 10),\n  b = seq(100, 200, by = 10)\n)\n\n# Your base plot\nbase_plot &lt;- ggplot(data.frame(x = rnorm(100)), aes(x)) +\n  geom_density() +\n  theme_minimal()\n\n# Create the plot\nplot &lt;- base_plot + geom_function(\n  fun = dnorm,\n  show.legend = TRUE,\n  aes(color = \"ATK\"),\n  colour = \"blue\"\n) + scale_colour_manual(name = \"Legend\", values = c(\"Line\" = \"red\"))\n\n# Display the plot\nprint(plot)\n\nWarning: No shared levels found between `names(values)` of the manual scale and the\ndata's colour values.\n\n\n\n\n\n\n\n\n\nWhy is the plot not displaying the legend with a red color ?\n\nChatGPT: The issue you’re encountering with the legend not displaying the color red and the legend being removed when you include the colour = “blue” argument in the geom_function is related to how aesthetics are mapped in ggplot2. When you use aes(color = “line”), you are mapping the color aesthetic to a constant string “line”, which means that all the points or lines will have the same color, and that color will be determined by the color scale associated with the “line” category. However, when you include colour = “blue” within the geom_function, you are effectively overriding the color aesthetic that you set with aes(color = “line”). This means that all elements drawn by this specific geom_function will be colored in blue, and ggplot2 will not create a legend because there’s no mapping of aesthetics that varies. If you want to specify a different color for this specific geom_function and still have a legend, you can do the following:\n\n\nbase_plot + \n  geom_function(\n    fun = dnorm,\n    aes(color = \"line\"),\n    show.legend = TRUE\n  ) +\n  scale_colour_manual(\n    name = \"Legend\",\n    values = c(\"line\" = \"red\")\n  )\n\n\n\n\n\n\n\n\nMore information : Indirectly referring to a variable",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ggplot2</span>"
+    ]
   },
   {
     "objectID": "chapters/ggplot2/ggplot2.html#correct-automatic-brackets",
     "href": "chapters/ggplot2/ggplot2.html#correct-automatic-brackets",
     "title": "3  ggplot2",
     "section": "3.2 Correct automatic brackets",
-    "text": "3.2 Correct automatic brackets\n\n# Install ggpubr package\nlibrarian::shelf(ggpubr, tidyr, quiet = TRUE)\n\n# Create some dummy data\nset.seed(123)\ngroup1 &lt;- rnorm(10, mean = 5, sd = 1)\ngroup2 &lt;- rnorm(10, mean = 7, sd = 2)\ngroup3 &lt;- rnorm(10, mean = 9, sd = 3)\n\n# Combine the data into a data frame\ndata &lt;- data.frame(group1, group2, group3) %&gt;%\n  pivot_longer(cols = everything(), names_to = \"group\")\n\n# Note that ggpubr works for tidy data, hence using pivot_longer()\n\n# Create the plot\nplot &lt;- ggboxplot(data,\n  x = \"group\",\n  y = \"value\",\n  width = 0.5,\n  fill = \"group\",\n  add = \"jitter\"\n)\nplot + stat_compare_means(method = \"anova\")\n\n\n\n\nNow let’s add some brackets:\n\n# Note that ggpubr seems to also load rstatix\nlibrarian::shelf(rstatix, quiet = TRUE)\n\n# Here is how you can add brackets with P values in your plot:\naov_results &lt;- suppressWarnings(anova_test(value ~ group, data = data))\nif (aov_results$p &lt;= 0.05) {\n  tukey_test &lt;- tukey_hsd(data, value ~ group) %&gt;% add_y_position()\n  plot + stat_pvalue_manual(tukey_test, label = \"P = {p.adj}\")\n}\n\n\n\n# Note that it is recommended to use an italic *P* in uppercase. I don't think\n# this is possible in an R code, so a simple uppercase P should suffice. However\n# now the problem is that the automatic p for the anova test is in lowercase.\n\nIn the datanovia example, you see add_xy_position() used, however that can mess up the order of the brackets. Instead, stick with add_y_position, as the x positions can be already determined in some functions. Here both functions work however. Perhaps rstatix got updated ? This was documented in this git issue.\n\ntukey_hsd(data, value ~ group) -&gt; test\n\n\n# Alternatively with P symbols (not recommended anymore):\n    # From ?stat_compare_means()\n    symnum.args &lt;-\n      list(\n        cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, Inf),\n        symbols = c(\"****\", \"***\", \"**\", \"*\", \"ns\")\n      )\n    # Brackets for anova would not work, so you need another test\n    my_comparisons &lt;-\n      list(\n        c(\"group1\", \"group2\"),\n        c(\"group2\", \"group3\"),\n        c(\"group1\", \"group3\")\n      )\n    plot + stat_compare_means(\n      method = \"wilcox.test\",\n      comparisons = my_comparisons,\n      symnum.args = symnum.args\n    )\n\n\n# Note that the following code doesn't work:\naov_results &lt;- anova_test(value ~ group, data = data) %&gt;%\n  tukey_hsd() %&gt;%\n  add_xy_position()\n# Instead, don't start from anova and use the test directly:\ntukey_test &lt;- tukey_hsd(data, value ~ group) %&gt;% add_y_position()"
+    "text": "3.2 Correct automatic brackets\n\n# Install ggpubr package\nlibrarian::shelf(ggpubr, tidyr, quiet = TRUE)\n\n\n  These packages will be installed:\n\n  'ggpubr'\n\n  It may take some time.\n\n\ninstallation des dépendances 'Deriv', 'modelr', 'microbenchmark', 'numDeriv', 'doBy', 'SparseM', 'MatrixModels', 'minqa', 'nloptr', 'RcppEigen', 'backports', 'carData', 'abind', 'Formula', 'pbkrtest', 'quantreg', 'lme4', 'broom', 'corrplot', 'car', 'ggrepel', 'ggsci', 'cowplot', 'ggsignif', 'gridExtra', 'polynom', 'rstatix'\n\n\nle package 'Deriv' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'modelr' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'microbenchmark' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'numDeriv' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'doBy' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'SparseM' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'MatrixModels' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'minqa' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'nloptr' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'RcppEigen' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'backports' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'carData' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'abind' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'Formula' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'pbkrtest' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'quantreg' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'lme4' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'broom' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'corrplot' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'car' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'ggrepel' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'ggsci' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'cowplot' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'ggsignif' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'gridExtra' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'polynom' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'rstatix' a été décompressé et les sommes MD5 ont été vérifiées avec succés\nle package 'ggpubr' a été décompressé et les sommes MD5 ont été vérifiées avec succés\n\n# Create some dummy data\nset.seed(123)\ngroup1 &lt;- rnorm(10, mean = 5, sd = 1)\ngroup2 &lt;- rnorm(10, mean = 7, sd = 2)\ngroup3 &lt;- rnorm(10, mean = 9, sd = 3)\n\n# Combine the data into a data frame\ndata &lt;- data.frame(group1, group2, group3) %&gt;%\n  pivot_longer(cols = everything(), names_to = \"group\")\n\n# Note that ggpubr works for tidy data, hence using pivot_longer()\n\n# Create the plot\nplot &lt;- ggboxplot(data,\n  x = \"group\",\n  y = \"value\",\n  width = 0.5,\n  fill = \"group\",\n  add = \"jitter\"\n)\nplot + stat_compare_means(method = \"anova\")\n\n\n\n\n\n\n\n\nNow let’s add some brackets:\n\n# Note that ggpubr seems to also load rstatix\nlibrarian::shelf(rstatix, quiet = TRUE)\n\n# Here is how you can add brackets with P values in your plot:\naov_results &lt;- suppressWarnings(anova_test(value ~ group, data = data))\nif (aov_results$p &lt;= 0.05) {\n  tukey_test &lt;- tukey_hsd(data, value ~ group) %&gt;% add_y_position()\n  plot + stat_pvalue_manual(tukey_test, label = \"P = {p.adj}\")\n}\n\n\n\n\n\n\n\n# Note that it is recommended to use an italic *P* in uppercase. I don't think\n# this is possible in an R code, so a simple uppercase P should suffice. However\n# now the problem is that the automatic p for the anova test is in lowercase.\n\nIn the datanovia example, you see add_xy_position() used, however that can mess up the order of the brackets. Instead, stick with add_y_position, as the x positions can be already determined in some functions. Here both functions work however. Perhaps rstatix got updated ? This was documented in this git issue.\n\ntukey_hsd(data, value ~ group) -&gt; test\n\n\n# Alternatively with P symbols (not recommended anymore):\n    # From ?stat_compare_means()\n    symnum.args &lt;-\n      list(\n        cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, Inf),\n        symbols = c(\"****\", \"***\", \"**\", \"*\", \"ns\")\n      )\n    # Brackets for anova would not work, so you need another test\n    my_comparisons &lt;-\n      list(\n        c(\"group1\", \"group2\"),\n        c(\"group2\", \"group3\"),\n        c(\"group1\", \"group3\")\n      )\n    plot + stat_compare_means(\n      method = \"wilcox.test\",\n      comparisons = my_comparisons,\n      symnum.args = symnum.args\n    )\n\n\n# Note that the following code doesn't work:\naov_results &lt;- anova_test(value ~ group, data = data) %&gt;%\n  tukey_hsd() %&gt;%\n  add_xy_position()\n# Instead, don't start from anova and use the test directly:\ntukey_test &lt;- tukey_hsd(data, value ~ group) %&gt;% add_y_position()",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>ggplot2</span>"
+    ]
   }
 ]
