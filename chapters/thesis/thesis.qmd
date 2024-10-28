@@ -372,6 +372,7 @@ volume = {17},
 
 ## Remove --- 3 em dash from bibliography
 
+
 This is actually the intended, default behavior of biblatex-chicago package:
 
 > The Manual doesn’t clarify how to treat multiple works by the same author, in one or more
@@ -387,3 +388,4 @@ Example when using biblatex : remove doi, isbn and 3 em dash for repeated author
 header-includes:
 - \usepackage[authordate, backend=biber, doi=false, isbn=false, dashed=false]{biblatex-chicago}
 ```
+[https://tex.stackexchange.com/questions/49140/get-full-name-twice-in-bibliography](https://tex.stackexchange.com/questions/49140/get-full-name-twice-in-bibliography)
